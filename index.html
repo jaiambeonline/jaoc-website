@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JAOC - Jai Ambe Online Center | Computer Sales & Service</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <style>
+        /* [Previous CSS remains exactly the same] */
+        
+        /* Additional styles for payment section */
+        .payment-methods {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .payment-method {
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 15px;
+            width: 120px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .payment-method:hover {
+            border-color: var(--primary);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .payment-method img {
+            height: 30px;
+            margin-bottom: 10px;
+        }
+        
+        .payment-section {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <!-- [Previous HTML remains the same until the cart modal] -->
+
+    <!-- Updated Cart Modal with Payment Section -->
+    <div class="cart-modal">
+        <div class="cart-header">
+            <h3>Your Cart (<span class="cart-items-count">3</span>)</h3>
+            <div class="close-cart">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+        
+        <div class="cart-items">
+            <!-- Cart items will be dynamically inserted here -->
+        </div>
+        
+        <div class="cart-total">
+            <span>Total:</span>
+            <span class="total-amount">₹81,997</span>
+        </div>
+        
+        <div class="payment-section">
+            <h4>Select Payment Method</h4>
+            <div class="payment-methods">
+                <div class="payment-method" data-method="upi">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/UPI-Logo-vector.svg" alt="UPI">
+                    <p>UPI</p>
+                </div>
+                <div class="payment-method" data-method="cards">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Cards">
+                    <p>Credit/Debit</p>
+                </div>
+                <div class="payment-method" data-method="netbanking">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/73/NetBanking.svg" alt="Netbanking">
+                    <p>Netbanking</p>
+                </div>
+                <div class="payment-method" data-method="wallet">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/39/Paytm_Logo.png" alt="Wallets">
+                    <p>Wallets</p>
+                </div>
+            </div>
+            
+            <div class="form-group" style="margin-top: 20px;">
+                <label for="customer-email">Email for receipt</label>
+                <input type="email" id="customer-email" class="form-control" placeholder="your@email.com" required>
+            </div>
+            
+            <button class="btn btn-primary checkout-btn" style="width: 100%; margin-top: 15px;">
+                Pay Now
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // [Previous JavaScript remains the same until the cart functionality]
+        
+        // Enhanced Cart Functionality with Payment
+        const cartItemsContainer = document.querySelector('.cart-items');
+        const cartItemsCount = document.querySelector('.cart-items-count');
+        const totalAmountElement = document.querySelector('.total-amount');
+        const checkoutBtn = document.querySelector('.checkout-btn');
+        const customerEmail = document.querySelector('#customer-email');
+        const paymentMethods = document.querySelectorAll('.payment-method');
+        
+        // Sample cart data (in a real app, this would come from your backend)
+        let cart = [
+            {
+                id: 1,
+                name: "UltraBook Pro X1",
+                price: 65999,
+                quantity: 1,
+                icon: "fas fa-laptop"
+            },
+            {
+                id: 2,
+                name: "External SSD 1TB",
+                price: 7999,
+                quantity: 2,
+                icon: "fas fa-hdd"
+            }
+        ];
+        
+        // Selected payment method
+        let selectedPaymentMethod = null;
+        
+        // Render cart items
+        function renderCart() {
+            cartItemsContainer.innerHTML = '';
+            let total = 0;
+            let count = 0;
+            
+            cart.forEach(item => {
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+                    <div class="cart-item-img">
+                        <i class="${item.icon}"></i>
+                    </div>
+                    <div class="cart-item-info">
+                        <div class="cart-item-title">${item.name}</div>
+                        <div class="cart-item-price">${item.price}</div>
+                        <div class="cart-item-actions">
+                            <div class="quantity-btn minus" data-id="${item.id}"><i class="fas fa-minus"></i></div>
+                            <span>${item.quantity}</span>
+                            <div class="quantity-btn plus" data-id="${item.id}"><i class="fas fa-plus"></i></div>
+                            <div class="remove-btn" data-id="${item.id}"><i class="fas fa-trash"></i></div>
+                        </div>
+                    </div>
+                `;
+                cartItemsContainer.appendChild(cartItem);
+                
+                total += item.price * item.quantity;
+                count += item.quantity;
+            });
+            
+            totalAmountElement.textContent = `₹${total.toLocaleString('en-IN')}`;
+            cartItemsCount.textContent = count;
+        }
+        
+        // Initialize cart
+        renderCart();
+        
+        // Payment method selection
+        paymentMethods.forEach(method => {
+            method.addEventListener('click', () => {
+                paymentMethods.forEach(m => m.style.borderColor = '#e2e8f0');
+                method.style.borderColor = 'var(--primary)';
+                selectedPaymentMethod = method.getAttribute('data-method');
+            });
+        });
+        
+        // Checkout function
+        checkoutBtn.addEventListener('click', async () => {
+            if (!selectedPaymentMethod) {
+                alert('Please select a payment method');
+                return;
+            }
+            
+            if (!customerEmail.value) {
+                alert('Please enter your email for receipt');
+                return;
+            }
+            
+            // Calculate total amount
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            // In a real application, you would call your backend to create an order
+            // For demo purposes, we'll use a mock order creation
+            
+            const orderData = {
+                amount: total * 100, // Razorpay expects amount in paise
+                currency: "INR",
+                receipt: "JAOC_" + Math.floor(Math.random() * 1000000),
+                notes: {
+                    customer_email: customerEmail.value,
+                    items: JSON.stringify(cart)
+                }
+            };
+            
+            // In a real app, you would get these from your backend
+            const razorpayOptions = {
+                key: "rzp_test_1DP5mmOlF5G5ag", // Test key - replace with your actual key
+                amount: orderData.amount,
+                currency: orderData.currency,
+                name: "Jai Ambe Online Center",
+                description: "Computer Products Purchase",
+                image: "https://via.placeholder.com/150",
+                order_id: null, // You would get this from your backend
+                handler: function(response) {
+                    alert(`Payment successful! Payment ID: ${response.razorpay_payment_id}`);
+                    // Here you would typically redirect to a success page or clear the cart
+                },
+                prefill: {
+                    name: "Customer Name", // You would get this from a form
+                    email: customerEmail.value,
+                    contact: "9876543210" // You would get this from a form
+                },
+                notes: orderData.notes,
+                theme: {
+                    color: "#2563eb"
+                }
+            };
+            
+            // For demo purposes, we'll proceed directly to payment
+            // In a real app, you would first create an order on your backend
+            const rzp = new Razorpay(razorpayOptions);
+            rzp.open();
+            
+            // Error handling
+            rzp.on('payment.failed', function(response) {
+                alert(`Payment failed: ${response.error.description}`);
+            });
+        });
+        
+        // Cart item quantity controls
+        cartItemsContainer.addEventListener('click', (e) => {
+            const target = e.target.closest('.quantity-btn') || e.target.closest('.remove-btn');
+            if (!target) return;
+            
+            const id = parseInt(target.getAttribute('data-id'));
+            const item = cart.find(i => i.id === id);
+            
+            if (target.classList.contains('minus')) {
+                if (item.quantity > 1) {
+                    item.quantity--;
+                } else {
+                    cart = cart.filter(i => i.id !== id);
+                }
+            } else if (target.classList.contains('plus')) {
+                item.quantity++;
+            } else if (target.classList.contains('remove-btn')) {
+                cart = cart.filter(i => i.id !== id);
+            }
+            
+            renderCart();
+        });
+        
+        // [Rest of the previous JavaScript remains the same]
+    </script>
+</body>
+</html>
