@@ -6,6 +6,7 @@
     <title>JAOC - Jai Ambe Online Center | Computer Sales & Service</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <style>
         :root {
             --primary: #2563eb;
@@ -281,10 +282,155 @@
             margin-bottom: 15px;
         }
         
+        /* Daily Services Section */
+        .daily-services {
+            padding: 80px 0;
+            background-color: #f1f5f9;
+        }
+        
+        .services-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .day-selector {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .day-btn {
+            padding: 10px 20px;
+            background-color: white;
+            border: 1px solid var(--gray);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .day-btn.active, .day-btn:hover {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .service-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .service-content.active {
+            display: block;
+        }
+        
+        .service-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .service-header h3 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .service-header p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .service-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .feature-card {
+            background-color: var(--light);
+            border-radius: 10px;
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .feature-card h4 {
+            color: var(--secondary);
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .feature-card p {
+            color: var(--gray);
+            text-align: center;
+        }
+        
+        .service-pricing {
+            background-color: var(--light);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+        
+        .service-pricing h4 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .price-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid var(--gray);
+        }
+        
+        .price-item:last-child {
+            border-bottom: none;
+        }
+        
+        .service-action {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
         /* Products Section */
         .products {
             padding: 80px 0;
-            background-color: #f1f5f9;
+            background-color: white;
         }
         
         .products-filter {
@@ -371,7 +517,7 @@
         /* Services Section */
         .services {
             padding: 80px 0;
-            background-color: white;
+            background-color: #f1f5f9;
         }
         
         .services-grid {
@@ -414,18 +560,18 @@
             content: "₹";
         }
         
-        .service-features {
+        .service-features-list {
             list-style: none;
             margin: 20px 0;
         }
         
-        .service-features li {
+        .service-features-list li {
             margin-bottom: 10px;
             display: flex;
             align-items: center;
         }
         
-        .service-features li i {
+        .service-features-list li i {
             color: var(--success);
             margin-right: 10px;
         }
@@ -774,170 +920,40 @@
             cursor: pointer;
         }
         
-        /* UPI Payment Styles */
+        /* Payment Methods */
+        .payment-methods {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .payment-method {
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 15px;
+            width: 120px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .payment-method:hover {
+            border-color: var(--primary);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .payment-method img {
+            height: 30px;
+            margin-bottom: 10px;
+        }
+        
         .payment-section {
             background-color: white;
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             margin-top: 30px;
-        }
-        
-        .payment-section h4 {
-            color: var(--primary);
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-        
-        .upi-options {
-            text-align: center;
-            margin: 20px 0;
-        }
-        
-        .upi-qr-container {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        
-        .upi-qr-code {
-            width: 180px;
-            height: 180px;
-            border: 1px solid #e2e8f0;
-            margin: 0 auto 15px;
-            display: block;
-            background-color: #fff;
-        }
-        
-        .upi-details {
-            margin-top: 15px;
-        }
-        
-        .upi-id-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            margin-top: 10px;
-        }
-        
-        .upi-id {
-            background: #f1f5f9;
-            padding: 8px 12px;
-            border-radius: 5px;
-            font-family: monospace;
-            font-size: 0.9rem;
-            word-break: break-all;
-        }
-        
-        .copy-upi-btn {
-            background: none;
-            border: none;
-            color: var(--primary);
-            cursor: pointer;
-            font-size: 1rem;
-        }
-        
-        .or-divider {
-            margin: 15px 0;
-            position: relative;
-            color: var(--gray);
-        }
-        
-        .or-divider span {
-            background: white;
-            padding: 0 15px;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .or-divider:before {
-            content: "";
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: #e2e8f0;
-            z-index: 0;
-        }
-        
-        .upi-payment-btn {
-            width: 100%;
-            margin-bottom: 15px;
-            padding: 12px;
-            font-size: 1rem;
-        }
-        
-        .payment-instructions {
-            background: #f8fafc;
-            padding: 15px;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            margin-top: 20px;
-        }
-        
-        .instruction {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 10px;
-            align-items: flex-start;
-        }
-        
-        .instruction i {
-            color: var(--success);
-            margin-top: 3px;
-        }
-        
-        .whatsapp-confirm {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            background: #25D366;
-            color: white;
-            padding: 10px 15px;
-            border-radius: 5px;
-            margin-top: 15px;
-            text-decoration: none;
-            font-weight: 500;
-        }
-        
-        /* Visitor Counter */
-        .visitor-counter {
-            text-align: center;
-            margin: 20px 0;
-            color: #94a3b8;
-            font-size: 0.9rem;
-        }
-        
-        .visitor-counter i {
-            margin-right: 5px;
-        }
-        
-        /* WhatsApp Float Button */
-        .whatsapp-float {
-            position: fixed;
-            width: 60px;
-            height: 60px;
-            bottom: 180px;
-            right: 30px;
-            background-color: #25D366;
-            color: white;
-            border-radius: 50%;
-            text-align: center;
-            font-size: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
         
         /* Cart Modal */
@@ -1113,8 +1129,14 @@
                 height: 70vh;
             }
             
-            .whatsapp-float {
-                bottom: 100px;
+            .day-selector {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .day-btn {
+                width: 100%;
+                text-align: center;
             }
         }
     </style>
@@ -1135,8 +1157,9 @@
             <nav>
                 <ul>
                     <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Daily Services</a></li>
                     <li><a href="#products">Products</a></li>
-                    <li><a href="#services">Services</a></li>
+                    <li><a href="#it-services">IT Services</a></li>
                     <li><a href="#booking">Book Service</a></li>
                     <li><a href="#testimonials">Testimonials</a></li>
                     <li><a href="#contact">Contact</a></li>
@@ -1144,12 +1167,10 @@
             </nav>
             
             <div class="nav-buttons">
-                <a href="tel:+918141515020" class="btn btn-outline">
-                    <i class="fas fa-phone"></i> Support
-                </a>
+                <a href="tel:+918141515020" class="btn btn-outline">Support</a>
                 <div class="cart-icon">
                     <i class="fas fa-shopping-cart"></i>
-                    <div class="cart-count">0</div>
+                    <div class="cart-count">3</div>
                 </div>
             </div>
         </div>
@@ -1163,6 +1184,251 @@
             <div class="hero-buttons">
                 <a href="#products" class="btn btn-primary">Shop Now</a>
                 <a href="#booking" class="btn btn-outline">Schedule Service</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Daily Services Section -->
+    <section class="daily-services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2><i class="fas fa-calendar-day"></i> Daily Services</h2>
+                <p>Discover our specialized services for each day of the week</p>
+            </div>
+            
+            <div class="services-container">
+                <div class="day-selector">
+                    <button class="day-btn active" data-day="monday">Monday</button>
+                    <button class="day-btn" data-day="tuesday">Tuesday</button>
+                    <button class="day-btn" data-day="wednesday">Wednesday</button>
+                    <button class="day-btn" data-day="thursday">Thursday</button>
+                    <button class="day-btn" data-day="friday">Friday</button>
+                    <button class="day-btn" data-day="saturday">Saturday</button>
+                    <button class="day-btn" data-day="sunday">Sunday</button>
+                </div>
+                
+                <!-- Monday Service -->
+                <div class="service-content active" id="monday-service">
+                    <div class="service-header">
+                        <h3><i class="fas fa-print"></i> Printing & Xerox Day</h3>
+                        <p>High-quality printing and photocopy services at special rates every Monday</p>
+                    </div>
+                    
+                    <div class="service-features">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <h4>Document Printing</h4>
+                            <p>Black & white and color printing with premium quality paper</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-copy"></i>
+                            </div>
+                            <h4>Photocopy Services</h4>
+                            <p>High-speed Xerox machines for all your copying needs</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-images"></i>
+                            </div>
+                            <h4>Photo Printing</h4>
+                            <p>Premium quality photo prints in various sizes</p>
+                        </div>
+                    </div>
+                    
+                    <div class="service-pricing">
+                        <h4>Special Monday Pricing</h4>
+                        <div class="price-list">
+                            <div class="price-item">
+                                <span>Black & White Print</span>
+                                <span>₹2/page</span>
+                            </div>
+                            <div class="price-item">
+                                <span>Color Print</span>
+                                <span>₹10/page</span>
+                            </div>
+                            <div class="price-item">
+                                <span>Xerox (B&W)</span>
+                                <span>₹1/page</span>
+                            </div>
+                            <div class="price-item">
+                                <span>Photo Print (4x6)</span>
+                                <span>₹15/photo</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-action">
+                        <a href="tel:+918141515020" class="btn btn-primary">
+                            <i class="fas fa-phone"></i> Call Now for Bulk Orders
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Tuesday Service -->
+                <div class="service-content" id="tuesday-service">
+                    <div class="service-header">
+                        <h3><i class="fas fa-passport"></i> CSC Services Day</h3>
+                        <p>Complete CSC (Common Service Center) solutions every Tuesday</p>
+                    </div>
+                    
+                    <div class="service-features">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-id-card"></i>
+                            </div>
+                            <h4>Government Documents</h4>
+                            <p>Aadhaar card services, PAN card application, and more</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-money-bill-wave"></i>
+                            </div>
+                            <h4>Bill Payments</h4>
+                            <p>Electricity, water, gas, and other utility bill payments</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-university"></i>
+                            </div>
+                            <h4>Banking Services</h4>
+                            <p>Bank account opening, passbook printing, and more</p>
+                        </div>
+                    </div>
+                    
+                    <div class="service-pricing">
+                        <h4>Tuesday Special Services</h4>
+                        <div class="price-list">
+                            <div class="price-item">
+                                <span>Aadhaar Update</span>
+                                <span>₹50/service</span>
+                            </div>
+                            <div class="price-item">
+                                <span>PAN Application</span>
+                                <span>₹100/service</span>
+                            </div>
+                            <div class="price-item">
+                                <span>Bill Payments</span>
+                                <span>No extra charge</span>
+                            </div>
+                            <div class="price-item">
+                                <span>Document Services</span>
+                                <span>Starting from ₹30</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-action">
+                        <a href="tel:+918141515020" class="btn btn-primary">
+                            <i class="fas fa-phone"></i> Call for CSC Services
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Wednesday Service -->
+                <div class="service-content" id="wednesday-service">
+                    <div class="service-header">
+                        <h3><i class="fas fa-passport"></i> Document Services Day</h3>
+                        <p>Specialized document services every Wednesday</p>
+                    </div>
+                    
+                    <div class="service-features">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-file-contract"></i>
+                            </div>
+                            <h4>Resume Making</h4>
+                            <p>Professional resume creation and printing services</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-stamp"></i>
+                            </div>
+                            <h4>Notary Services</h4>
+                            <p>Document attestation and notary services available</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-envelope-open-text"></i>
+                            </div>
+                            <h4>Application Forms</h4>
+                            <p>Help with filling various application forms</p>
+                        </div>
+                    </div>
+                    
+                    <div class="service-pricing">
+                        <h4>Wednesday Document Services</h4>
+                        <div class="price-list">
+                            <div class="price-item">
+                                <span>Resume Making</span>
+                                <span>₹150/service</span>
+                            </div>
+                            <div class="price-item">
+                                <span>Notary Services</span>
+                                <span>₹100/document</span>
+                            </div>
+                            <div class="price-item">
+                                <span>Form Filling</span>
+                                <span>₹50/form</span>
+                            </div>
+                            <div class="price-item">
+                                <span>Document Typing</span>
+                                <span>₹30/page</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-action">
+                        <a href="tel:+918141515020" class="btn btn-primary">
+                            <i class="fas fa-phone"></i> Call for Document Services
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Additional days would follow similar pattern -->
+                <div class="service-content" id="thursday-service">
+                    <div class="service-header">
+                        <h3><i class="fas fa-laptop"></i> Computer Repair Day</h3>
+                        <p>Special discounts on computer repair and maintenance every Thursday</p>
+                    </div>
+                    
+                    <!-- Content for Thursday -->
+                </div>
+                
+                <div class="service-content" id="friday-service">
+                    <div class="service-header">
+                        <h3><i class="fas fa-mobile-alt"></i> Digital Services Day</h3>
+                        <p>Mobile recharge, DTH payment, and other digital services every Friday</p>
+                    </div>
+                    
+                    <!-- Content for Friday -->
+                </div>
+                
+                <div class="service-content" id="saturday-service">
+                    <div class="service-header">
+                        <h3><i class="fas fa-camera"></i> Photo Services Day</h3>
+                        <p>Passport photos, photo editing, and printing every Saturday</p>
+                    </div>
+                    
+                    <!-- Content for Saturday -->
+                </div>
+                
+                <div class="service-content" id="sunday-service">
+                    <div class="service-header">
+                        <h3><i class="fas fa-tshirt"></i> All Services Available</h3>
+                        <p>Full range of services available on Sunday</p>
+                    </div>
+                    
+                    <!-- Content for Sunday -->
+                </div>
             </div>
         </div>
     </section>
@@ -1343,11 +1609,11 @@
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="services" id="services">
+    <!-- IT Services Section -->
+    <section class="services" id="it-services">
         <div class="container">
             <div class="section-title">
-                <h2>Our Services</h2>
+                <h2>Our IT Services</h2>
                 <p>Comprehensive computer repair and maintenance services</p>
             </div>
             
@@ -1359,7 +1625,7 @@
                     </div>
                     <h3>Diagnostic & Repair</h3>
                     <p>Comprehensive diagnosis and repair for all computer issues including hardware and software problems.</p>
-                    <ul class="service-features">
+                    <ul class="service-features-list">
                         <li><i class="fas fa-check"></i> Virus & Malware Removal</li>
                         <li><i class="fas fa-check"></i> Hardware Replacement</li>
                         <li><i class="fas fa-check"></i> Operating System Issues</li>
@@ -1376,7 +1642,7 @@
                     </div>
                     <h3>Data Recovery</h3>
                     <p>Recover your valuable data from damaged, corrupted, or formatted storage devices.</p>
-                    <ul class="service-features">
+                    <ul class="service-features-list">
                         <li><i class="fas fa-check"></i> Hard Drive Recovery</li>
                         <li><i class="fas fa-check"></i> SSD Recovery</li>
                         <li><i class="fas fa-check"></i> RAID Recovery</li>
@@ -1393,7 +1659,7 @@
                     </div>
                     <h3>Network Solutions</h3>
                     <p>Setup, configuration, and troubleshooting for home and office networks.</p>
-                    <ul class="service-features">
+                    <ul class="service-features-list">
                         <li><i class="fas fa-check"></i> WiFi Setup & Optimization</li>
                         <li><i class="fas fa-check"></i> Router Configuration</li>
                         <li><i class="fas fa-check"></i> Network Security</li>
@@ -1462,21 +1728,21 @@
                 
                 <div>
                     <h3>Why Book With JAOC?</h3>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check-circle text-success"></i> Same-day service available</li>
-                        <li><i class="fas fa-check-circle text-success"></i> Free diagnostic for booked appointments</li>
-                        <li><i class="fas fa-check-circle text-success"></i> Certified technicians</li>
-                        <li><i class="fas fa-check-circle text-success"></i> 90-day service warranty</li>
-                        <li><i class="fas fa-check-circle text-success"></i> On-site or in-store options</li>
-                        <li><i class="fas fa-check-circle text-success"></i> No fix, no fee policy</li>
+                    <ul class="service-features-list">
+                        <li><i class="fas fa-check-circle"></i> Same-day service available</li>
+                        <li><i class="fas fa-check-circle"></i> Free diagnostic for booked appointments</li>
+                        <li><i class="fas fa-check-circle"></i> Certified technicians</li>
+                        <li><i class="fas fa-check-circle"></i> 90-day service warranty</li>
+                        <li><i class="fas fa-check-circle"></i> On-site or in-store options</li>
+                        <li><i class="fas fa-check-circle"></i> No fix, no fee policy</li>
                     </ul>
                     
-                    <div class="mt-5">
+                    <div style="margin-top: 30px;">
                         <h3>Service Hours</h3>
                         <p><strong>Monday - Friday:</strong> 9:00 AM - 8:00 PM</p>
                         <p><strong>Saturday:</strong> 10:00 AM - 6:00 PM</p>
                         <p><strong>Sunday:</strong> 10:00 AM - 2:00 PM</p>
-                        <p class="mt-3"><i class="fas fa-exclamation-circle text-warning"></i> Emergency services available after hours</p>
+                        <p style="margin-top: 15px;"><i class="fas fa-exclamation-circle"></i> Emergency services available after hours</p>
                     </div>
                 </div>
             </div>
@@ -1585,11 +1851,6 @@
                         <div>
                             <h3>Phone Number</h3>
                             <p>+91 8141515020</p>
-                            <p style="margin-top: 10px;">
-                                <a href="tel:+918141515020" class="btn btn-outline" style="padding: 5px 10px; font-size: 0.9rem;">
-                                    <i class="fas fa-phone"></i> Call Now
-                                </a>
-                            </p>
                         </div>
                     </div>
                     
@@ -1600,11 +1861,6 @@
                         <div>
                             <h3>Email Address</h3>
                             <p>bhavishyaenterprisevalsad@gmail.com</p>
-                            <p style="margin-top: 10px;">
-                                <a href="mailto:bhavishyaenterprisevalsad@gmail.com" class="btn btn-outline" style="padding: 5px 10px; font-size: 0.9rem;">
-                                    <i class="fas fa-envelope"></i> Email Us
-                                </a>
-                            </p>
                         </div>
                     </div>
                     
@@ -1620,8 +1876,11 @@
                 </div>
                 
                 <div class="map">
-                    <!-- Google Maps Embed -->
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14888.28311976671!2d72.931785!3d20.942317!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjDCsDU2JzMyLjMiTiA3MsKwNTUnNTAuNCJF!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    <!-- Map placeholder -->
+                    <div style="width: 100%; height: 100%; background-color: #e2e8f0; display: flex; justify-content: center; align-items: center; color: var(--gray);">
+                        <i class="fas fa-map-marked-alt" style="font-size: 3rem;"></i>
+                        <p>Map Location</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1636,13 +1895,12 @@
                         <i class="fas fa-laptop-code"></i>
                         <h3>Jai Ambe Online Center <span style="color: white;">(JAOC)</span></h3>
                     </div>
-                    <p>Shop No. 5, T.M. Park, Mukund Park, Parnera<br>Valsad - 396020, Gujarat, India</p>
-                    <p><i class="fas fa-phone"></i> +91 8141515020</p>
-                    <p><i class="fas fa-envelope"></i> bhavishyaenterprisevalsad@gmail.com</p>
+                    <p>Your trusted partner for computer sales, repair, and maintenance services since 2010.</p>
                     <div class="social-links">
-                        <a href="https://wa.me/918141515020" target="_blank"><i class="fab fa-whatsapp"></i></a>
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
                 
@@ -1650,8 +1908,9 @@
                     <h3>Quick Links</h3>
                     <ul class="footer-links">
                         <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Daily Services</a></li>
                         <li><a href="#products">Products</a></li>
-                        <li><a href="#services">Services</a></li>
+                        <li><a href="#it-services">IT Services</a></li>
                         <li><a href="#booking">Book Service</a></li>
                         <li><a href="#testimonials">Testimonials</a></li>
                         <li><a href="#contact">Contact</a></li>
@@ -1680,12 +1939,6 @@
                 </div>
             </div>
             
-            <!-- Visitor Counter -->
-            <div class="visitor-counter">
-                <i class="fas fa-users"></i> 
-                Total Visitors: <span id="visitorCount">0</span>
-            </div>
-            
             <div class="copyright">
                 <p>&copy; 2023 Jai Ambe Online Center (JAOC). All rights reserved.</p>
             </div>
@@ -1706,26 +1959,16 @@
             </div>
             <div class="chat-body">
                 <div class="chat-message bot-message">
-                    <p>Hello! Welcome to <strong>Jai Ambe Online Center</strong> 🖥️</p>
-                    <p>How can I help you today?</p>
+                    <p>Hello! Welcome to Jai Ambe Online Center. How can I help you today?</p>
                 </div>
                 <div class="chat-message bot-message">
-                    <p>For instant support:</p>
-                    <p>
-                        <a href="tel:+918141515020" style="color: var(--primary);">
-                            <i class="fas fa-phone"></i> Call: +91 8141515020
-                        </a>
-                    </p>
-                    <p>
-                        <a href="https://wa.me/918141515020" style="color: #25D366;">
-                            <i class="fab fa-whatsapp"></i> WhatsApp
-                        </a>
-                    </p>
-                    <p>
-                        <a href="mailto:bhavishyaenterprisevalsad@gmail.com" style="color: var(--accent);">
-                            <i class="fas fa-envelope"></i> Email Us
-                        </a>
-                    </p>
+                    <p>You can ask about:</p>
+                    <ul>
+                        <li>Product availability</li>
+                        <li>Service booking</li>
+                        <li>Technical support</li>
+                        <li>Store hours</li>
+                    </ul>
                 </div>
             </div>
             <div class="chat-input">
@@ -1737,77 +1980,85 @@
         </div>
     </div>
 
-    <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/918141515020" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <!-- Cart Modal with UPI Payment -->
+    <!-- Cart Modal -->
     <div class="cart-modal">
         <div class="cart-header">
-            <h3>Your Cart (<span class="cart-items-count">0</span>)</h3>
+            <h3>Your Cart (<span class="cart-items-count">3</span>)</h3>
             <div class="close-cart">
                 <i class="fas fa-times"></i>
             </div>
         </div>
         
         <div class="cart-items">
-            <!-- Cart items will be dynamically inserted here -->
-            <div class="empty-cart-message">
-                <i class="fas fa-shopping-cart"></i>
-                <p>Your cart is empty</p>
+            <!-- Cart Item 1 -->
+            <div class="cart-item">
+                <div class="cart-item-img">
+                    <i class="fas fa-laptop"></i>
+                </div>
+                <div class="cart-item-info">
+                    <div class="cart-item-title">UltraBook Pro X1</div>
+                    <div class="cart-item-price">65,999</div>
+                    <div class="cart-item-actions">
+                        <div class="quantity-btn"><i class="fas fa-minus"></i></div>
+                        <span>1</span>
+                        <div class="quantity-btn"><i class="fas fa-plus"></i></div>
+                        <div class="remove-btn"><i class="fas fa-trash"></i></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Cart Item 2 -->
+            <div class="cart-item">
+                <div class="cart-item-img">
+                    <i class="fas fa-hdd"></i>
+                </div>
+                <div class="cart-item-info">
+                    <div class="cart-item-title">External SSD 1TB</div>
+                    <div class="cart-item-price">7,999</div>
+                    <div class="cart-item-actions">
+                        <div class="quantity-btn"><i class="fas fa-minus"></i></div>
+                        <span>2</span>
+                        <div class="quantity-btn"><i class="fas fa-plus"></i></div>
+                        <div class="remove-btn"><i class="fas fa-trash"></i></div>
+                    </div>
+                </div>
             </div>
         </div>
         
         <div class="cart-total">
             <span>Total:</span>
-            <span class="total-amount">₹0</span>
+            <span>₹81,997</span>
         </div>
         
         <div class="payment-section">
-            <h4><i class="fas fa-rupee-sign"></i> UPI Payment</h4>
-            
-            <div class="upi-options">
-                <!-- UPI QR Code -->
-                <div class="upi-qr-container">
-                    <div class="upi-qr-code">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/1200px-QR_code_for_mobile_English_Wikipedia.svg.png" alt="Scan to Pay" style="width:100%;height:100%;object-fit:cover;">
-                    </div>
-                    <div class="upi-details">
-                        <p><i class="fas fa-qrcode"></i> Scan QR Code</p>
-                        <div class="upi-id-container">
-                            <span class="upi-id">mongiwala@okicici</span>
-                            <button class="copy-upi-btn" title="Copy UPI ID">
-                                <i class="far fa-copy"></i>
-                            </button>
-                        </div>
-                    </div>
+            <h4>Select Payment Method</h4>
+            <div class="payment-methods">
+                <div class="payment-method" data-method="upi">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/UPI-Logo-vector.svg" alt="UPI">
+                    <p>UPI</p>
                 </div>
-                
-                <div class="or-divider">
-                    <span>OR</span>
+                <div class="payment-method" data-method="cards">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Cards">
+                    <p>Credit/Debit</p>
                 </div>
-                
-                <!-- UPI Payment Button -->
-                <button class="btn btn-primary upi-payment-btn">
-                    <i class="fas fa-mobile-alt"></i> Pay via UPI App
-                </button>
+                <div class="payment-method" data-method="netbanking">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/73/NetBanking.svg" alt="Netbanking">
+                    <p>Netbanking</p>
+                </div>
+                <div class="payment-method" data-method="wallet">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/39/Paytm_Logo.png" alt="Wallets">
+                    <p>Wallets</p>
+                </div>
             </div>
             
-            <div class="payment-instructions">
-                <div class="instruction">
-                    <i class="fas fa-check-circle"></i>
-                    <p>1. Complete payment using above methods</p>
-                </div>
-                <div class="instruction">
-                    <i class="fas fa-check-circle"></i>
-                    <p>2. Share payment screenshot on WhatsApp for confirmation</p>
-                </div>
-                <a href="https://wa.me/918141515020?text=Payment%20done%20for%20Order%20at%20JAOC" 
-                   class="whatsapp-confirm">
-                    <i class="fab fa-whatsapp"></i> Confirm Payment
-                </a>
+            <div class="form-group" style="margin-top: 20px;">
+                <label for="customer-email">Email for receipt</label>
+                <input type="email" id="customer-email" class="form-control" placeholder="your@email.com" required>
             </div>
+            
+            <button class="btn btn-primary checkout-btn" style="width: 100%; margin-top: 15px;">
+                Pay Now
+            </button>
         </div>
     </div>
 
@@ -1865,27 +2116,12 @@
                 
                 // Simulate bot response after delay
                 setTimeout(() => {
-                    let botResponse = '';
-                    if(message.toLowerCase().includes('contact')) {
-                        botResponse = `You can reach us at:<br>
-                        <strong>Phone:</strong> <a href="tel:+918141515020">+91 8141515020</a><br>
-                        <strong>Email:</strong> <a href="mailto:bhavishyaenterprisevalsad@gmail.com">bhavishyaenterprisevalsad@gmail.com</a>`;
-                    } 
-                    else if(message.toLowerCase().includes('address')) {
-                        botResponse = `Our shop address:<br>
-                        Shop No. 5, T.M. Park, Mukund Park<br>
-                        Parnera, Valsad - 396020, Gujarat`;
-                    }
-                    else {
-                        botResponse = `Thank you for your message! For faster support:<br>
-                        <a href="tel:+918141515020"><i class="fas fa-phone"></i> Call Now</a> or 
-                        <a href="https://wa.me/918141515020"><i class="fab fa-whatsapp"></i> WhatsApp</a>`;
-                    }
-
                     const botMessage = document.createElement('div');
                     botMessage.className = 'chat-message bot-message';
-                    botMessage.innerHTML = botResponse;
+                    botMessage.innerHTML = `<p>Thank you for your message! Our support team will get back to you shortly. In the meantime, you can call us at +91 97654 32109 for immediate assistance.</p>`;
                     chatBody.appendChild(botMessage);
+                    
+                    // Scroll to bottom again
                     chatBody.scrollTop = chatBody.scrollHeight;
                 }, 1000);
             }
@@ -1899,177 +2135,75 @@
             }
         });
         
-        // Visitor Counter
-        function updateCounter() {
-            let count = localStorage.getItem('jaocVisitors');
-            if (!count) {
-                count = 1000; // Starting count
-            }
-            count++;
-            localStorage.setItem('jaocVisitors', count);
-            document.getElementById('visitorCount').textContent = count;
-        }
-        updateCounter();
-        
-        // Cart Functionality
-        let cart = JSON.parse(localStorage.getItem('jaocCart')) || [];
-        const cartItemsContainer = document.querySelector('.cart-items');
-        const cartItemsCount = document.querySelector('.cart-items-count');
-        const totalAmountElement = document.querySelector('.total-amount');
-        const cartCount = document.querySelector('.cart-count');
-        
-        // Render cart items
-        function renderCart() {
-            cartItemsContainer.innerHTML = '';
-            let total = 0;
-            let count = 0;
-            
-            if (cart.length === 0) {
-                cartItemsContainer.innerHTML = `
-                    <div class="empty-cart-message">
-                        <i class="fas fa-shopping-cart"></i>
-                        <p>Your cart is empty</p>
-                    </div>
-                `;
-                totalAmountElement.textContent = '₹0';
-                cartItemsCount.textContent = '0';
-                cartCount.textContent = '0';
-                return;
-            }
-            
-            cart.forEach(item => {
-                const cartItem = document.createElement('div');
-                cartItem.className = 'cart-item';
-                cartItem.innerHTML = `
-                    <div class="cart-item-img">
-                        <i class="${item.icon}"></i>
-                    </div>
-                    <div class="cart-item-info">
-                        <div class="cart-item-title">${item.name}</div>
-                        <div class="cart-item-price">${item.price}</div>
-                        <div class="cart-item-actions">
-                            <div class="quantity-btn minus" data-id="${item.id}"><i class="fas fa-minus"></i></div>
-                            <span>${item.quantity}</span>
-                            <div class="quantity-btn plus" data-id="${item.id}"><i class="fas fa-plus"></i></div>
-                            <div class="remove-btn" data-id="${item.id}"><i class="fas fa-trash"></i></div>
-                        </div>
-                    </div>
-                `;
-                cartItemsContainer.appendChild(cartItem);
+        // Day selection functionality
+        document.querySelectorAll('.day-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                document.querySelectorAll('.day-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
                 
-                total += item.price * item.quantity;
-                count += item.quantity;
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                // Hide all service content
+                document.querySelectorAll('.service-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                // Show the selected service content
+                const day = this.getAttribute('data-day');
+                document.getElementById(`${day}-service`).classList.add('active');
+            });
+        });
+        
+        // Auto-select current day
+        function setCurrentDay() {
+            const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+            const today = new Date().getDay();
+            const currentDay = days[today];
+            
+            // Remove active class from all buttons
+            document.querySelectorAll('.day-btn').forEach(btn => {
+                btn.classList.remove('active');
             });
             
-            totalAmountElement.textContent = `₹${total.toLocaleString('en-IN')}`;
-            cartItemsCount.textContent = count;
-            cartCount.textContent = count;
+            // Hide all service content
+            document.querySelectorAll('.service-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Activate current day
+            document.querySelector(`.day-btn[data-day="${currentDay}"]`).classList.add('active');
+            document.getElementById(`${currentDay}-service`).classList.add('active');
         }
         
-        // Initialize cart
-        renderCart();
-        
-        // UPI Payment Handler
-        document.querySelector('.upi-payment-btn').addEventListener('click', function() {
-            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            const upiUrl = `upi://pay?pa=mongiwala@okicici&pn=Jai%20Ambe%20Online%20Center&am=${total}&cu=INR&tn=Payment%20for%20Order%20at%20JAOC`;
-            
-            // For mobile devices
-            if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-                window.location.href = upiUrl;
-            } 
-            // For desktop - show instructions
-            else {
-                alert(`Please open a UPI app and send:
-                Amount: ₹${total.toLocaleString('en-IN')}
-                To UPI ID: mongiwala@okicici`);
-            }
-        });
-        
-        // Copy UPI ID Functionality
-        document.querySelector('.copy-upi-btn').addEventListener('click', function() {
-            const upiId = 'mongiwala@okicici';
-            navigator.clipboard.writeText(upiId).then(() => {
-                const originalIcon = this.innerHTML;
-                this.innerHTML = '<i class="fas fa-check"></i>';
-                setTimeout(() => {
-                    this.innerHTML = originalIcon;
-                }, 2000);
-            });
-        });
-        
-        // WhatsApp confirmation pre-filled message
-        document.querySelector('.whatsapp-confirm').addEventListener('click', function(e) {
-            if(cart.length === 0) {
-                e.preventDefault();
-                alert('Your cart is empty!');
-            }
-        });
+        // Set current day on page load
+        setCurrentDay();
         
         // Add to cart functionality
         const addToCartButtons = document.querySelectorAll('.add-to-cart');
+        const cartCount = document.querySelector('.cart-count');
         
         addToCartButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const productCard = this.closest('.product-card');
-                const productId = Math.floor(Math.random() * 1000); // Generate unique ID
-                const productName = productCard.querySelector('h3').textContent;
-                const productPrice = parseInt(productCard.querySelector('.product-price').textContent.replace(/\D/g, ''));
-                const productIcon = productCard.querySelector('.product-img i').className;
+            button.addEventListener('click', () => {
+                // Get current count
+                let count = parseInt(cartCount.textContent);
+                // Increment count
+                count++;
+                // Update cart count
+                cartCount.textContent = count;
                 
-                // Check if product already in cart
-                const existingItem = cart.find(item => item.name === productName);
+                // Show success message
+                button.textContent = 'Added!';
+                button.style.backgroundColor = 'var(--success)';
                 
-                if (existingItem) {
-                    existingItem.quantity++;
-                } else {
-                    cart.push({
-                        id: productId,
-                        name: productName,
-                        price: productPrice,
-                        quantity: 1,
-                        icon: productIcon
-                    });
-                }
-                
-                // Save to localStorage
-                localStorage.setItem('jaocCart', JSON.stringify(cart));
-                
-                // Update UI
-                renderCart();
-                
-                // Show added animation
-                this.innerHTML = '<i class="fas fa-check"></i> Added';
-                this.style.backgroundColor = 'var(--success)';
+                // Reset button after delay
                 setTimeout(() => {
-                    this.innerHTML = 'Add to Cart';
-                    this.style.backgroundColor = 'var(--primary)';
+                    button.textContent = 'Add to Cart';
+                    button.style.backgroundColor = 'var(--primary)';
                 }, 2000);
             });
-        });
-        
-        // Cart item quantity controls
-        cartItemsContainer.addEventListener('click', (e) => {
-            const target = e.target.closest('.quantity-btn') || e.target.closest('.remove-btn');
-            if (!target) return;
-            
-            const id = parseInt(target.getAttribute('data-id'));
-            const item = cart.find(i => i.id === id);
-            
-            if (target.classList.contains('minus')) {
-                if (item.quantity > 1) {
-                    item.quantity--;
-                } else {
-                    cart = cart.filter(i => i.id !== id);
-                }
-            } else if (target.classList.contains('plus')) {
-                item.quantity++;
-            } else if (target.classList.contains('remove-btn')) {
-                cart = cart.filter(i => i.id !== id);
-            }
-            
-            localStorage.setItem('jaocCart', JSON.stringify(cart));
-            renderCart();
         });
         
         // Filter buttons
