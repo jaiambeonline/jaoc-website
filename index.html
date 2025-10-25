@@ -290,6 +290,41 @@
             flex-wrap: wrap;
         }
         
+        /* Social Proof Section */
+        .social-proof {
+            padding: 60px 0;
+            background: white;
+        }
+        
+        .proof-stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .proof-stat {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .proof-stat i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .proof-stat h3 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 5px;
+        }
+        
+        .proof-stat p {
+            color: var(--gray);
+            font-weight: 500;
+        }
+        
         /* Features Section */
         .features {
             padding: 100px 0;
@@ -537,124 +572,10 @@
             }
         }
         
-        /* Products Section */
-        .products {
-            padding: 100px 0;
-            background: white;
-        }
-        
-        .products-filter {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        
-        .filter-btn {
-            padding: 10px 20px;
-            background: white;
-            border: 2px solid #e2e8f0;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-        
-        .filter-btn.active, .filter-btn:hover {
-            background: var(--gradient);
-            color: white;
-            border-color: transparent;
-        }
-        
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
-        }
-        
-        .product-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-        
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-        }
-        
-        .product-img {
-            height: 200px;
-            background: var(--gradient);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 4rem;
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .product-img::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.1);
-        }
-        
-        .product-info {
-            padding: 25px 20px;
-        }
-        
-        .product-info h3 {
-            margin-bottom: 10px;
-            font-size: 1.3rem;
-        }
-        
-        .product-info p {
-            color: var(--gray);
-            margin-bottom: 15px;
-            font-size: 0.95rem;
-        }
-        
-        .product-price {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin: 15px 0;
-        }
-        
-        .product-price::before {
-            content: "₹";
-        }
-        
-        .product-rating {
-            color: #f59e0b;
-            margin: 10px 0;
-        }
-        
-        .product-actions {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-            gap: 10px;
-        }
-        
-        .product-actions .btn {
-            flex: 1;
-        }
-        
         /* Services Section */
         .services-section {
             padding: 100px 0;
-            background: #f8fafc;
+            background: white;
         }
         
         .services-grid {
@@ -729,10 +650,155 @@
             margin-right: 10px;
         }
         
+        /* Testimonials Section */
+        .testimonials {
+            padding: 100px 0;
+            background: #f8fafc;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .testimonial-content {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: var(--secondary);
+            position: relative;
+        }
+        
+        .testimonial-content::before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--primary);
+            opacity: 0.2;
+            position: absolute;
+            top: -20px;
+            left: -10px;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+        
+        .author-info h4 {
+            margin-bottom: 5px;
+        }
+        
+        .author-info p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Blog Section */
+        .blog {
+            padding: 100px 0;
+            background: white;
+        }
+        
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .blog-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .blog-img {
+            height: 200px;
+            background: var(--gradient);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 3rem;
+        }
+        
+        .blog-content {
+            padding: 25px;
+        }
+        
+        .blog-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        .blog-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .blog-content h3 {
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .blog-content p {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+        
+        .blog-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .blog-link:hover {
+            gap: 10px;
+        }
+        
         /* Contact Section */
         .contact {
             padding: 100px 0;
-            background: white;
+            background: #f8fafc;
         }
         
         .contact-container {
@@ -904,6 +970,103 @@
             transform: scale(1.1);
         }
         
+        .chatbot-window {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 350px;
+            height: 450px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            z-index: 1001;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        .chatbot-window.active {
+            display: flex;
+        }
+        
+        .chat-header {
+            background: var(--gradient);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .chat-header h3 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .close-chat {
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+        
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .message {
+            max-width: 80%;
+            padding: 12px 15px;
+            border-radius: 18px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        
+        .bot-message {
+            background: #f1f5f9;
+            align-self: flex-start;
+            border-bottom-left-radius: 5px;
+        }
+        
+        .user-message {
+            background: var(--gradient);
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 5px;
+        }
+        
+        .chat-input {
+            display: flex;
+            padding: 15px;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        .chat-input input {
+            flex: 1;
+            padding: 10px 15px;
+            border: 1px solid #e2e8f0;
+            border-radius: 25px;
+            outline: none;
+        }
+        
+        .send-btn {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        
         /* Cart Modal */
         .cart-modal {
             position: fixed;
@@ -1043,6 +1206,103 @@
             font-size: 1.1rem;
         }
         
+        /* Checkout Modal */
+        .checkout-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 3000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .checkout-modal.active {
+            display: flex;
+        }
+        
+        .checkout-container {
+            background: white;
+            width: 90%;
+            max-width: 600px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+        
+        .checkout-header {
+            background: var(--gradient);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .checkout-body {
+            padding: 30px;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .checkout-summary {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .summary-total {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        .checkout-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .checkout-actions .btn {
+            flex: 1;
+        }
+        
         /* Responsive Design */
         @media (max-width: 992px) {
             .nav-links {
@@ -1063,6 +1323,11 @@
             
             .map {
                 height: 300px;
+            }
+            
+            .chatbot-window {
+                width: 300px;
+                height: 400px;
             }
         }
         
@@ -1088,7 +1353,7 @@
                 font-size: 2rem;
             }
             
-            .features, .daily-services, .products, .services-section, .contact {
+            .features, .daily-services, .products, .services-section, .contact, .testimonials, .blog {
                 padding: 80px 0;
             }
             
@@ -1110,10 +1375,6 @@
                 grid-template-columns: 1fr;
             }
             
-            .products-grid {
-                grid-template-columns: 1fr;
-            }
-            
             .services-grid {
                 grid-template-columns: 1fr;
             }
@@ -1124,6 +1385,15 @@
             
             .cart-modal {
                 width: 100%;
+            }
+            
+            .chatbot-window {
+                width: calc(100% - 40px);
+                right: 20px;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
             }
         }
         
@@ -1156,8 +1426,9 @@
                 <ul class="nav-links">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#services">Daily Services</a></li>
-                    <li><a href="#products">Products</a></li>
                     <li><a href="#it-services">IT Services</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#blog">Tech Tips</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
                 
@@ -1180,8 +1451,36 @@
             <h2>Premium Computer Sales & Service</h2>
             <p>Jai Ambe Online Center (JAOC) is your trusted partner for all computer needs - from sales to repair and maintenance. We provide top-quality hardware, expert service, and unparalleled support.</p>
             <div class="hero-buttons">
-                <a href="#products" class="btn btn-primary">Shop Now</a>
-                <a href="#services" class="btn btn-outline">View Daily Services</a>
+                <a href="#services" class="btn btn-primary">View Daily Services</a>
+                <a href="#contact" class="btn btn-outline">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Section -->
+    <section class="social-proof">
+        <div class="container">
+            <div class="proof-stats">
+                <div class="proof-stat">
+                    <i class="fas fa-users"></i>
+                    <h3>5000+</h3>
+                    <p>Satisfied Customers</p>
+                </div>
+                <div class="proof-stat">
+                    <i class="fas fa-laptop-medical"></i>
+                    <h3>12+</h3>
+                    <p>Years of Experience</p>
+                </div>
+                <div class="proof-stat">
+                    <i class="fas fa-tools"></i>
+                    <h3>8500+</h3>
+                    <p>Computers Repaired</p>
+                </div>
+                <div class="proof-stat">
+                    <i class="fas fa-star"></i>
+                    <h3>4.9/5</h3>
+                    <p>Customer Rating</p>
+                </div>
             </div>
         </div>
     </section>
@@ -1303,52 +1602,131 @@
                     </div>
                 </div>
                 
-                <!-- Additional days would follow similar pattern -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Products Section -->
-    <section class="products" id="products">
-        <div class="container">
-            <div class="section-title">
-                <h2>Featured Products</h2>
-                <p>Browse our latest collection of computers, laptops, and accessories</p>
-            </div>
-            
-            <div class="products-filter">
-                <button class="filter-btn active">All Products</button>
-                <button class="filter-btn">Laptops</button>
-                <button class="filter-btn">Desktops</button>
-                <button class="filter-btn">Accessories</button>
-            </div>
-            
-            <div class="products-grid">
-                <!-- Product 1 -->
-                <div class="product-card">
-                    <div class="product-img">
-                        <i class="fas fa-laptop"></i>
+                <!-- Tuesday Service -->
+                <div class="service-content" id="tuesday-service">
+                    <div class="service-header">
+                        <h3><i class="fas fa-desktop"></i> Hardware Installation Day</h3>
+                        <p>Complete hardware setup and installation services every Tuesday</p>
                     </div>
-                    <div class="product-info">
-                        <h3>UltraBook Pro X1</h3>
-                        <p>15.6" FHD Display, Intel i7, 16GB RAM, 512GB SSD</p>
-                        <div class="product-rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                            <span>(128)</span>
+                    
+                    <div class="service-features">
+                        <div class="service-feature-card">
+                            <div class="service-feature-icon">
+                                <i class="fas fa-hdd"></i>
+                            </div>
+                            <h4>Hard Drive Installation</h4>
+                            <p>SSD and HDD installation with data migration services</p>
                         </div>
-                        <div class="product-price">65,999</div>
-                        <div class="product-actions">
-                            <button class="btn btn-outline">Details</button>
-                            <button class="btn btn-primary add-to-cart">Add to Cart</button>
+                        
+                        <div class="service-feature-card">
+                            <div class="service-feature-icon">
+                                <i class="fas fa-memory"></i>
+                            </div>
+                            <h4>RAM Upgrade</h4>
+                            <p>Memory upgrades for improved system performance</p>
                         </div>
+                        
+                        <div class="service-feature-card">
+                            <div class="service-feature-icon">
+                                <i class="fas fa-tachometer-alt"></i>
+                            </div>
+                            <h4>Processor Installation</h4>
+                            <p>CPU upgrades with proper cooling solutions</p>
+                        </div>
+                    </div>
+                    
+                    <div class="service-pricing">
+                        <h4>Special Tuesday Pricing</h4>
+                        <div class="price-list">
+                            <div class="price-item">
+                                <span>Hard Drive Installation</span>
+                                <span>₹299</span>
+                            </div>
+                            <div class="price-item">
+                                <span>RAM Upgrade</span>
+                                <span>₹199</span>
+                            </div>
+                            <div class="price-item">
+                                <span>Processor Installation</span>
+                                <span>₹499</span>
+                            </div>
+                            <div class="price-item">
+                                <span>Full System Assembly</span>
+                                <span>₹999</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-action">
+                        <a href="tel:+918141515020" class="btn btn-primary">
+                            <i class="fas fa-phone"></i> Book Your Installation
+                        </a>
                     </div>
                 </div>
                 
-                <!-- Additional products would follow similar pattern -->
+                <!-- Wednesday Service -->
+                <div class="service-content" id="wednesday-service">
+                    <div class="service-header">
+                        <h3><i class="fas fa-shield-virus"></i> Antivirus & Security Day</h3>
+                        <p>Complete computer security solutions and antivirus installation every Wednesday</p>
+                    </div>
+                    
+                    <div class="service-features">
+                        <div class="service-feature-card">
+                            <div class="service-feature-icon">
+                                <i class="fas fa-bug"></i>
+                            </div>
+                            <h4>Virus Removal</h4>
+                            <p>Complete malware and virus removal with system optimization</p>
+                        </div>
+                        
+                        <div class="service-feature-card">
+                            <div class="service-feature-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h4>Antivirus Installation</h4>
+                            <p>Installation of premium antivirus software with 1-year subscription</p>
+                        </div>
+                        
+                        <div class="service-feature-card">
+                            <div class="service-feature-icon">
+                                <i class="fas fa-user-shield"></i>
+                            </div>
+                            <h4>Privacy Protection</h4>
+                            <p>Browser security and privacy settings configuration</p>
+                        </div>
+                    </div>
+                    
+                    <div class="service-pricing">
+                        <h4>Special Wednesday Pricing</h4>
+                        <div class="price-list">
+                            <div class="price-item">
+                                <span>Virus Removal</span>
+                                <span>₹399</span>
+                            </div>
+                            <div class="price-item">
+                                <span>Antivirus Installation</span>
+                                <span>₹299</span>
+                            </div>
+                            <div class="price-item">
+                                <span>Complete Security Suite</span>
+                                <span>₹799</span>
+                            </div>
+                            <div class="price-item">
+                                <span>Data Backup & Security</span>
+                                <span>₹599</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-action">
+                        <a href="tel:+918141515020" class="btn btn-primary">
+                            <i class="fas fa-phone"></i> Secure Your Computer
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Additional days would follow similar pattern -->
             </div>
         </div>
     </section>
@@ -1379,7 +1757,147 @@
                     <button class="btn btn-outline">Learn More</button>
                 </div>
                 
-                <!-- Additional services would follow similar pattern -->
+                <!-- Service 2 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Data Recovery</h3>
+                    <p>Professional data recovery services for accidentally deleted or corrupted files from any storage device.</p>
+                    <ul class="service-features-list">
+                        <li><i class="fas fa-check"></i> Hard Drive Recovery</li>
+                        <li><i class="fas fa-check"></i> USB/Flash Drive Recovery</li>
+                        <li><i class="fas fa-check"></i> Formatted Drive Recovery</li>
+                        <li><i class="fas fa-check"></i> Corrupted File Repair</li>
+                    </ul>
+                    <div class="service-price">From 1499</div>
+                    <button class="btn btn-outline">Learn More</button>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3>Networking Solutions</h3>
+                    <p>Complete networking setup including WiFi installation, router configuration, and network troubleshooting.</p>
+                    <ul class="service-features-list">
+                        <li><i class="fas fa-check"></i> WiFi Setup & Optimization</li>
+                        <li><i class="fas fa-check"></i> Router Configuration</li>
+                        <li><i class="fas fa-check"></i> Network Security</li>
+                        <li><i class="fas fa-check"></i> Internet Connectivity Issues</li>
+                    </ul>
+                    <div class="service-price">From 799</div>
+                    <button class="btn btn-outline">Learn More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Customer Testimonials</h2>
+                <p>See what our satisfied customers have to say about our services</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        I had a major virus issue with my laptop, and JAOC fixed it in just a few hours. Their service is fast, professional, and affordable. Highly recommended!
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">RK</div>
+                        <div class="author-info">
+                            <h4>Rahul Kumar</h4>
+                            <p>Business Owner</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        The team at JAOC helped me recover important documents from my crashed hard drive. They were patient, explained everything clearly, and saved my business data.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">PS</div>
+                        <div class="author-info">
+                            <h4>Priya Sharma</h4>
+                            <p>Teacher</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        I've been getting my printing work done at JAOC for years. Their Monday specials are great, and the quality is always excellent. Trustworthy and reliable service.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">AM</div>
+                        <div class="author-info">
+                            <h4>Anil Mehta</h4>
+                            <p>Student</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="blog" id="blog">
+        <div class="container">
+            <div class="section-title">
+                <h2>Tech Tips & Updates</h2>
+                <p>Stay updated with the latest computer tips and technology news</p>
+            </div>
+            
+            <div class="blog-grid">
+                <div class="blog-card">
+                    <div class="blog-img">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> May 15, 2023</span>
+                            <span><i class="far fa-clock"></i> 5 min read</span>
+                        </div>
+                        <h3>5 Essential Computer Security Tips Everyone Should Know</h3>
+                        <p>Protect your computer from viruses, malware, and hackers with these simple but effective security practices.</p>
+                        <a href="#" class="blog-link">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="blog-card">
+                    <div class="blog-img">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> April 28, 2023</span>
+                            <span><i class="far fa-clock"></i> 7 min read</span>
+                        </div>
+                        <h3>How to Speed Up Your Slow Computer: A Complete Guide</h3>
+                        <p>Is your computer running slower than usual? Learn the most effective ways to boost its performance.</p>
+                        <a href="#" class="blog-link">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="blog-card">
+                    <div class="blog-img">
+                        <i class="fas fa-hdd"></i>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> April 10, 2023</span>
+                            <span><i class="far fa-clock"></i> 6 min read</span>
+                        </div>
+                        <h3>SSD vs HDD: Which Storage Solution Is Right for You?</h3>
+                        <p>Compare the pros and cons of Solid State Drives and Hard Disk Drives to make the best choice for your needs.</p>
+                        <a href="#" class="blog-link">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1473,8 +1991,9 @@
                     <ul class="footer-links">
                         <li><a href="#home">Home</a></li>
                         <li><a href="#services">Daily Services</a></li>
-                        <li><a href="#products">Products</a></li>
                         <li><a href="#it-services">IT Services</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#blog">Tech Tips</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
@@ -1512,6 +2031,25 @@
         <div class="chatbot-btn">
             <i class="fas fa-comment-alt"></i>
         </div>
+        <div class="chatbot-window">
+            <div class="chat-header">
+                <h3><i class="fas fa-robot"></i> JAOC Assistant</h3>
+                <div class="close-chat">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+            <div class="chat-messages">
+                <div class="message bot-message">
+                    Hello! I'm the JAOC assistant. How can I help you today?
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" placeholder="Type your message...">
+                <button class="send-btn">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
     </div>
 
     <!-- Cart Modal -->
@@ -1541,13 +2079,89 @@
         </div>
     </div>
 
+    <!-- Checkout Modal -->
+    <div class="checkout-modal">
+        <div class="checkout-container">
+            <div class="checkout-header">
+                <h2>Checkout</h2>
+                <p>Complete your purchase</p>
+            </div>
+            <div class="checkout-body">
+                <form id="checkout-form">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="address">Delivery Address</label>
+                        <textarea id="address" rows="3" required></textarea>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <input type="text" id="city" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="pincode">Pincode</label>
+                            <input type="text" id="pincode" required>
+                        </div>
+                    </div>
+                    
+                    <div class="checkout-summary">
+                        <h3>Order Summary</h3>
+                        <div class="summary-item">
+                            <span>Subtotal</span>
+                            <span>₹0</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Service Charge</span>
+                            <span>₹99</span>
+                        </div>
+                        <div class="summary-total">
+                            <span>Total</span>
+                            <span>₹99</span>
+                        </div>
+                    </div>
+                    
+                    <div class="checkout-actions">
+                        <button type="button" class="btn btn-outline cancel-checkout">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Place Order</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Mobile Menu Toggle
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const nav = document.querySelector('nav');
+        const navLinks = document.querySelector('.nav-links');
         
         mobileMenuBtn.addEventListener('click', () => {
-            nav.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            
+            // Toggle between hamburger and close icon
+            const icon = mobileMenuBtn.querySelector('i');
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
         });
         
         // Cart Functionality
@@ -1703,18 +2317,6 @@
         // Set current day on page load
         setCurrentDay();
         
-        // Filter buttons
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Remove active class from all buttons
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                // Add active class to clicked button
-                button.classList.add('active');
-            });
-        });
-        
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
@@ -1728,6 +2330,90 @@
                     });
                 }
             });
+        });
+        
+        // Chatbot functionality
+        const chatbotBtn = document.querySelector('.chatbot-btn');
+        const chatbotWindow = document.querySelector('.chatbot-window');
+        const closeChat = document.querySelector('.close-chat');
+        const sendBtn = document.querySelector('.send-btn');
+        const chatInput = document.querySelector('.chat-input input');
+        const chatMessages = document.querySelector('.chat-messages');
+        
+        chatbotBtn.addEventListener('click', () => {
+            chatbotWindow.classList.toggle('active');
+        });
+        
+        closeChat.addEventListener('click', () => {
+            chatbotWindow.classList.remove('active');
+        });
+        
+        function addMessage(text, isUser = false) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${isUser ? 'user-message' : 'bot-message'}`;
+            messageDiv.textContent = text;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+        
+        function handleUserMessage() {
+            const message = chatInput.value.trim();
+            if (message) {
+                addMessage(message, true);
+                chatInput.value = '';
+                
+                // Simulate bot response
+                setTimeout(() => {
+                    let response = "I'm sorry, I didn't understand that. How can I assist you with our computer services?";
+                    
+                    if (message.toLowerCase().includes('service') || message.toLowerCase().includes('repair')) {
+                        response = "We offer various computer services including diagnostics, repair, data recovery, and more. Which service are you interested in?";
+                    } else if (message.toLowerCase().includes('price') || message.toLowerCase().includes('cost')) {
+                        response = "Our service prices start from ₹299 depending on the complexity. Would you like to know about a specific service?";
+                    } else if (message.toLowerCase().includes('time') || message.toLowerCase().includes('hours')) {
+                        response = "We're open Monday-Friday: 9 AM - 8 PM, Saturday: 10 AM - 6 PM, and Sunday: 10 AM - 2 PM.";
+                    } else if (message.toLowerCase().includes('location') || message.toLowerCase().includes('address')) {
+                        response = "We're located at Shop No. 5, T.M. Park, Mukund Park, Parnera, Valsad - 396020, Gujarat, India.";
+                    } else if (message.toLowerCase().includes('contact') || message.toLowerCase().includes('phone')) {
+                        response = "You can reach us at +91 8141515020 or email bhavishyaenterprisevalsad@gmail.com";
+                    }
+                    
+                    addMessage(response);
+                }, 1000);
+            }
+        }
+        
+        sendBtn.addEventListener('click', handleUserMessage);
+        
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                handleUserMessage();
+            }
+        });
+        
+        // Checkout functionality
+        const checkoutBtn = document.querySelector('.checkout-btn');
+        const checkoutModal = document.querySelector('.checkout-modal');
+        const cancelCheckout = document.querySelector('.cancel-checkout');
+        const checkoutForm = document.getElementById('checkout-form');
+        
+        checkoutBtn.addEventListener('click', () => {
+            if (cart.length > 0) {
+                checkoutModal.classList.add('active');
+                cartModal.classList.remove('active');
+            }
+        });
+        
+        cancelCheckout.addEventListener('click', () => {
+            checkoutModal.classList.remove('active');
+        });
+        
+        checkoutForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your order! We will contact you shortly to confirm details.');
+            checkoutModal.classList.remove('active');
+            cart = [];
+            updateCart();
         });
     </script>
 </body>
