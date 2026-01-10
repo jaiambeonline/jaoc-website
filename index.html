@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JAOC - Jai Ambe Online Center | Your Trusted Computer Solution Partner</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>JAOC - Jai Ambe Online Center | Complete Computer Solutions</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -35,6 +35,7 @@
         
         html {
             scroll-behavior: smooth;
+            overflow-x: hidden;
         }
         
         body {
@@ -43,6 +44,7 @@
             background: var(--light);
             line-height: 1.7;
             overflow-x: hidden;
+            position: relative;
         }
         
         h1, h2, h3, h4, h5 {
@@ -59,7 +61,7 @@
         
         /* Modern Header with Glass Morphism */
         header {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
             box-shadow: var(--shadow);
@@ -269,6 +271,7 @@
             padding: 5px;
             background: transparent;
             border: none;
+            z-index: 1001;
         }
         
         /* Hero Section with Particles Effect */
@@ -391,7 +394,7 @@
             opacity: 0.9;
         }
         
-        /* Services Section */
+        /* Services Section - Optimized for Single View */
         .services {
             padding: 120px 0;
             background: white;
@@ -539,7 +542,7 @@
             font-size: 1.1rem;
         }
         
-        /* Daily Services with Tabs */
+        /* Daily Services with COMPLETE DAYS */
         .daily-services {
             padding: 120px 0;
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
@@ -559,6 +562,23 @@
             margin-bottom: 50px;
             flex-wrap: wrap;
             gap: 10px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+            scrollbar-width: thin;
+        }
+        
+        .tabs-header::-webkit-scrollbar {
+            height: 6px;
+        }
+        
+        .tabs-header::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        
+        .tabs-header::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
         }
         
         .tab-btn {
@@ -574,6 +594,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            flex-shrink: 0;
         }
         
         .tab-btn i {
@@ -614,6 +635,7 @@
             align-items: center;
             justify-content: center;
             gap: 15px;
+            flex-wrap: wrap;
         }
         
         .day-service-header p {
@@ -1137,7 +1159,7 @@
             font-size: 0.9rem;
         }
         
-        /* Chatbot - Fixed and Enhanced */
+        /* Chatbot */
         .chatbot {
             position: fixed;
             bottom: 30px;
@@ -1381,48 +1403,6 @@
             box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
         }
         
-        /* Modal Styles */
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 2000;
-            display: none;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-        
-        .modal.active {
-            display: flex;
-            animation: fadeIn 0.3s ease;
-        }
-        
-        .modal-content {
-            background: white;
-            width: 100%;
-            max-width: 600px;
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            animation: slideUp 0.3s ease;
-        }
-        
-        .modal-header {
-            background: var(--gradient);
-            color: white;
-            padding: 25px 30px;
-        }
-        
-        .modal-body {
-            padding: 30px;
-            max-height: 70vh;
-            overflow-y: auto;
-        }
-        
         /* New Features */
         .live-support {
             position: fixed;
@@ -1494,45 +1474,51 @@
             transform: scale(1.1);
         }
         
-        /* Responsive Design */
-        @media (max-width: 1200px) {
-            .hero h1 {
-                font-size: 3.5rem;
-            }
-            
-            .section-title h2 {
-                font-size: 2.8rem;
-            }
-        }
-        
+        /* Mobile Navigation - FIXED */
         @media (max-width: 992px) {
             .nav-links {
                 position: fixed;
-                top: 80px;
-                left: 0;
-                width: 100%;
+                top: 0;
+                left: -100%;
+                width: 280px;
+                height: 100vh;
                 background: white;
                 flex-direction: column;
-                padding: 30px;
-                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-                transform: translateY(-100%);
-                opacity: 0;
-                transition: all 0.3s ease;
+                padding: 100px 30px 30px;
+                box-shadow: 10px 0 30px rgba(0,0,0,0.1);
+                transition: left 0.4s ease;
                 z-index: 999;
-                border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+                overflow-y: auto;
             }
             
             .nav-links.active {
-                transform: translateY(0);
-                opacity: 1;
+                left: 0;
             }
             
             .nav-links li {
-                margin: 10px 0;
+                margin: 15px 0;
+                width: 100%;
+            }
+            
+            .nav-links li a {
+                display: block;
+                padding: 12px 20px;
+                border-radius: var(--radius);
+                transition: all 0.3s ease;
+            }
+            
+            .nav-links li a:hover {
+                background: rgba(67, 97, 238, 0.1);
+            }
+            
+            .nav-buttons {
+                display: none;
             }
             
             .mobile-menu-btn {
                 display: block;
+                position: relative;
+                z-index: 1001;
             }
             
             .hero h1 {
@@ -1544,8 +1530,30 @@
             }
             
             .chatbot-window {
-                width: 350px;
-                height: 500px;
+                width: calc(100% - 40px);
+                right: 20px;
+                height: 450px;
+            }
+            
+            .chatbot-btn, .live-support-btn, .whatsapp-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+            
+            .whatsapp-float {
+                bottom: 100px;
+                left: 20px;
+            }
+            
+            .live-support {
+                bottom: 20px;
+                left: 20px;
+            }
+            
+            .chatbot {
+                bottom: 20px;
+                right: 20px;
             }
         }
         
@@ -1561,11 +1569,17 @@
             
             .hero p {
                 font-size: 1.1rem;
+                margin-bottom: 30px;
             }
             
             .hero-buttons {
                 flex-direction: column;
                 align-items: stretch;
+            }
+            
+            .hero-buttons .btn {
+                width: 100%;
+                justify-content: center;
             }
             
             .section-title h2 {
@@ -1577,30 +1591,103 @@
             }
             
             .tabs-container {
-                padding: 30px 20px;
+                padding: 25px 15px;
+                margin: 0 -10px;
+                border-radius: 0;
+                box-shadow: none;
+            }
+            
+            .tabs-header {
+                margin-bottom: 30px;
+                justify-content: flex-start;
+                padding-bottom: 15px;
             }
             
             .tab-btn {
-                padding: 12px 25px;
+                padding: 12px 20px;
                 font-size: 0.9rem;
+            }
+            
+            .day-service-content {
+                padding: 10px 0;
+            }
+            
+            .day-service-header h3 {
+                font-size: 1.8rem;
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .service-highlights {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .highlight-card {
+                padding: 20px;
+            }
+            
+            .pricing-box {
+                padding: 25px 20px;
+            }
+            
+            .price-list {
+                grid-template-columns: 1fr;
             }
             
             .service-card {
                 padding: 30px 25px;
             }
             
+            .services-grid, .blog-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
             .form-row {
                 grid-template-columns: 1fr;
             }
             
-            .chatbot-window {
-                width: calc(100% - 40px);
-                right: 20px;
-                height: 450px;
+            .contact-form {
+                padding: 25px;
             }
             
-            .live-support, .whatsapp-float {
-                display: none;
+            .contact-info {
+                gap: 25px;
+            }
+            
+            .contact-item {
+                gap: 15px;
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .contact-icon {
+                margin: 0 auto;
+            }
+            
+            .stats-container {
+                gap: 15px;
+            }
+            
+            .stat-box {
+                min-width: 140px;
+                padding: 20px;
+            }
+            
+            .stat-box h3 {
+                font-size: 2rem;
+            }
+            
+            .floating-stats {
+                position: relative;
+                bottom: 0;
+                margin-top: 50px;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
             }
         }
         
@@ -1609,21 +1696,87 @@
                 font-size: 2.2rem;
             }
             
+            .logo-text h1 {
+                font-size: 1.4rem;
+            }
+            
+            .logo-icon {
+                width: 45px;
+                height: 45px;
+            }
+            
+            .logo-icon i {
+                font-size: 1.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .section-title p {
+                font-size: 1rem;
+            }
+            
+            .service-card h3, .day-service-header h3 {
+                font-size: 1.5rem;
+            }
+            
+            .service-price {
+                font-size: 1.8rem;
+            }
+            
+            .testimonial-card {
+                padding: 30px 20px;
+            }
+            
+            .testimonial-content {
+                font-size: 1rem;
+            }
+            
+            .author-avatar {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+            
+            .author-info h4 {
+                font-size: 1.1rem;
+            }
+            
+            .blog-content h3 {
+                font-size: 1.2rem;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .tab-btn {
+                padding: 10px 15px;
+                font-size: 0.85rem;
+            }
+            
             .stat-box {
-                min-width: 150px;
-                padding: 20px;
+                min-width: 120px;
+                padding: 15px;
             }
             
             .stat-box h3 {
-                font-size: 2.2rem;
+                font-size: 1.8rem;
             }
             
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .blog-grid {
-                grid-template-columns: 1fr;
+            .service-card, .highlight-card {
+                padding: 20px 15px;
             }
         }
     </style>
@@ -1654,16 +1807,6 @@
                     <li><a href="#blog">Tech Tips</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
-                
-                <div class="nav-buttons">
-                    <a href="tel:+918141515020" class="btn btn-outline">
-                        <i class="fas fa-phone"></i> Call Now
-                    </a>
-                    <div class="cart-icon">
-                        <i class="fas fa-shopping-cart"></i>
-                        <div class="cart-count">0</div>
-                    </div>
-                </div>
             </nav>
         </div>
     </header>
@@ -1772,7 +1915,7 @@
         </div>
     </section>
 
-    <!-- Daily Services -->
+    <!-- Daily Services - COMPLETE 7 DAYS -->
     <section class="daily-services" id="daily-services">
         <div class="container">
             <div class="section-title">
@@ -1872,7 +2015,407 @@
                     </div>
                 </div>
                 
-                <!-- Additional tabs would be added similarly -->
+                <!-- Tuesday Tab -->
+                <div class="tab-content" id="tuesday-tab">
+                    <div class="day-service-content">
+                        <div class="day-service-header">
+                            <h3><i class="fas fa-desktop"></i> Hardware Installation Day</h3>
+                            <p>Complete hardware setup and installation services every Tuesday</p>
+                        </div>
+                        
+                        <div class="service-highlights">
+                            <div class="highlight-card">
+                                <div class="highlight-icon">
+                                    <i class="fas fa-hdd"></i>
+                                </div>
+                                <h4>Hard Drive Installation</h4>
+                                <p>SSD and HDD installation with data migration and partitioning services</p>
+                            </div>
+                            
+                            <div class="highlight-card">
+                                <div class="highlight-icon">
+                                    <i class="fas fa-memory"></i>
+                                </div>
+                                <h4>RAM Upgrade</h4>
+                                <p>Memory upgrades for improved system performance with compatibility check</p>
+                            </div>
+                            
+                            <div class="highlight-card">
+                                <div class="highlight-icon">
+                                    <i class="fas fa-tachometer-alt"></i>
+                                </div>
+                                <h4>Processor Installation</h4>
+                                <p>CPU upgrades with proper cooling solutions and thermal paste application</p>
+                            </div>
+                        </div>
+                        
+                        <div class="pricing-box">
+                            <div class="pricing-header">
+                                <h4>Special Tuesday Pricing</h4>
+                                <p>Valid only on Tuesdays</p>
+                            </div>
+                            <div class="price-list">
+                                <div class="price-item">
+                                    <span>Hard Drive Installation</span>
+                                    <span>₹299</span>
+                                </div>
+                                <div class="price-item">
+                                    <span>RAM Upgrade</span>
+                                    <span>₹199</span>
+                                </div>
+                                <div class="price-item">
+                                    <span>Processor Installation</span>
+                                    <span>₹499</span>
+                                </div>
+                                <div class="price-item">
+                                    <span>Full System Assembly</span>
+                                    <span>₹999</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="day-action">
+                            <a href="tel:+918141515020" class="btn btn-primary">
+                                <i class="fas fa-tools"></i> Book Your Installation
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Wednesday Tab -->
+                <div class="tab-content" id="wednesday-tab">
+                    <div class="day-service-content">
+                        <div class="day-service-header">
+                            <h3><i class="fas fa-shield-virus"></i> Antivirus & Security Day</h3>
+                            <p>Complete computer security solutions and antivirus installation every Wednesday</p>
+                        </div>
+                        
+                        <div class="service-highlights">
+                            <div class="highlight-card">
+                                <div class="highlight-icon">
+                                    <i class="fas fa-bug"></i>
+                                </div>
+                                <h4>Virus Removal</h4>
+                                <p>Complete malware and virus removal with system optimization and cleanup</p>
+                            </div>
+                            
+                            <div class="highlight-card">
+                                <div class="highlight-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <h4>Antivirus Installation</h4>
+                                <p>Installation of premium antivirus software with 1-year subscription included</p>
+                            </div>
+                            
+                            <div class="highlight-card">
+                                <div class="highlight-icon">
+                                    <i class="fas fa-user-shield"></i>
+                                </div>
+                                <h4>Privacy Protection</h4>
+                                <p>Browser security, privacy settings configuration, and data protection</p>
+                            </div>
+                        </div>
+                        
+                        <div class="pricing-box">
+                            <div class="pricing-header">
+                                <h4>Special Wednesday Pricing</h4>
+                                <p>Valid only on Wednesdays</p>
+                            </div>
+                            <div class="price-list">
+                                <div class="price-item">
+                                    <span>Virus Removal</span>
+                                    <span>₹399</span>
+                                </div>
+                                <div class="price-item">
+                                    <span>Antivirus Installation</span>
+                                    <span>₹299</span>
+                                </div>
+                                <div class="price-item">
+                                    <span>Complete Security Suite</span>
+                                    <span>₹799</span>
+                                </div>
+                                <div class="price-item">
+                                    <span>Data Backup & Security</span>
+                                    <span>₹599</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="day-action">
+                            <a href="tel:+918141515020" class="btn btn-primary">
+                                <i class="fas fa-shield-alt"></i> Secure Your Computer
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Thursday Tab -->
+                <div class="tab-content" id="thursday-tab">
+                    <div class="day-service-content">
+                        <div class="day-service-header">
+                            <h3><i class="fas fa-wifi"></i> Networking & WiFi Day</h3>
+                            <p>Complete networking solutions and WiFi optimization every Thursday</p>
+                        </div>
+                        
+                        <div class="service-highlights">
+                            <div class="highlight-card">
+                                <div class="highlight-icon">
+                                    <i class="fas fa-wifi"></i>
+                                </div>
+                                <h4>WiFi Setup</h4>
+                                <p>Complete WiFi installation with optimal router placement and configuration</p>
+                            </div>
+                            
+                            <div class="highlight-card">
+                                <div class="highlight-icon">
+                                    <i class="fas fa-network-wired"></i>
+                                </div>
+                                <h4>Network Troubleshooting</h4>
+                                <p>Diagnose and fix network connectivity issues for home and office</p>
+                            </div>
+                            
+                            <div class="highlight-card">
+                                <div class="highlight-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <h4>Network Security</h4>
+                                <p>Secure your network with firewall setup and unauthorized access prevention</p>
+                            </div>
+                        </div>
+                        
+                        <div class="pricing-box">
+                            <div class="pricing-header">
+                                <h4>Special Thursday Pricing</h4>
+                                <p>Valid only on Thursdays</p>
+                            </div>
+                            <div class="price-list">
+                                <div class="price-item">
+                                    <span>WiFi Setup (Basic)</span>
+                                    <span>₹499</span>
+                                </div>
+                                <div class="price-item">
+                                    <span>Network Troubleshooting</span>
+                                    <span>₹399</span>
+                                </div>
+                                <div class="price-item">
+                                    <span>Complete Network Setup</span>
+                                    <span>₹1199</span>
+                                </div>
+                                <div class="price-item">
+                                    <span>Network Security Audit</span>
+                                    <span>₹699</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="day-action">
+                            <a href="tel:+918141515020" class="btn btn-primary">
+                                <i class="fas fa-wifi"></i> Get Connected
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Friday Tab -->
+                <div class="tab-content" id="friday-tab">
+                    <div class="day-service-content">
+                        <div class="day-service-header">
+                            <h3><i class="fas fa-tools"></i> Repair & Maintenance Day</h3>
+                            <p>Comprehensive computer repair and maintenance services every Friday</p>
+                        </div>
+                        
+                        <div class="service-highlights">
+                            <div class="highlight-card">
+                                <div class="highlight-icon">
+                                    <i class="fas fa-laptop-medical"></i>
+                                </div>
+                                <h4>Complete Diagnostics</h4>
+                                <p>Thorough computer checkup to identify all hardware and software issues</p>
+                            </div>
+                            
+                            <div class="highlight-card">
+                                <div class="highlight-icon">
+                                    <i class="fas fa-fan"></i>
+                                </div>
+                                <h4>System Cleaning</h4>
+                                <p>Physical cleaning of computer components and thermal paste replacement</p>
+                            </div>
+                            
+                            <div class="highlight-card">
+                                <div class="highlight-icon">
+                                    <i class="fas fa-bolt"></i>
+                                </div>
+                                <h4>Power Supply Issues</h4>
+                                <p>Diagnose and fix power-related problems including PSU replacement</p>
+                            </div>
+                        </div>
+                        
+                        <div class="pricing-box">
+                            <div class="pricing-header">
+                                <h4>Special Friday Pricing</h4>
+                                <p>Valid only on Fridays</p>
+                            </div>
+                            <div class="price-list">
+                                <div class="price-item">
+                                    <span>Complete Diagnostic</span>
+                                    <span>₹299</span>
+                                </div>
+                                <div class="price-item">
+                                    <span>System Cleaning</span>
+                                    <span>₹499</span>
+                                </div>
+                                <div class="price-item">
+                                    <span>Component Repair</span>
+                                    <span>From ₹799</span>
+                                </div>
+                                <div class="price-item">
+                                    <span>Preventive Maintenance</span>
+                                    <span>₹899</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="day-action">
+                            <a href="tel:+918141515020" class="btn btn-primary">
+                                <i class="fas fa-tools"></i> Get Your Computer Fixed
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Saturday Tab -->
+                <div class="tab-content" id="saturday-tab">
+                    <div class="day-service-content">
+                        <div class="day-service-header">
+                            <h3><i class="fas fa-laptop"></i> Laptop Special Day</h3>
+                            <p>Dedicated laptop repair and upgrade services every Saturday</p>
+                        </div>
+                        
+                        <div class="service-highlights">
+                            <div class="highlight-card">
+                                <div class="highlight-icon">
+                                    <i class="fas fa-battery-full"></i>
+                                </div>
+                                <h4>Battery Replacement</h4>
+                                <p>Genuine battery replacement for all laptop brands with warranty</p>
+                            </div>
+                            
+                            <div class="highlight-card">
+                                <div class="highlight-icon">
+                                    <i class="fas fa-keyboard"></i>
+                                </div>
+                                <h4>Keyboard Repair</h4>
+                                <p>Professional keyboard cleaning, repair, and replacement services</p>
+                            </div>
+                            
+                            <div class="highlight-card">
+                                <div class="highlight-icon">
+                                    <i class="fas fa-tachometer-alt"></i>
+                                </div>
+                                <h4>Performance Upgrade</h4>
+                                <p>SSD installation and RAM upgrade for faster laptop performance</p>
+                            </div>
+                        </div>
+                        
+                        <div class="pricing-box">
+                            <div class="pricing-header">
+                                <h4>Special Saturday Pricing</h4>
+                                <p>Valid only on Saturdays</p>
+                            </div>
+                            <div class="price-list">
+                                <div class="price-item">
+                                    <span>Laptop Battery Replacement</span>
+                                    <span>From ₹1499</span>
+                                </div>
+                                <div class="price-item">
+                                    <span>Keyboard Repair</span>
+                                    <span>From ₹799</span>
+                                </div>
+                                <div class="price-item">
+                                    <span>Screen Replacement</span>
+                                    <span>From ₹2499</span>
+                                </div>
+                                <div class="price-item">
+                                    <span>Performance Upgrade</span>
+                                    <span>From ₹1999</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="day-action">
+                            <a href="tel:+918141515020" class="btn btn-primary">
+                                <i class="fas fa-laptop"></i> Fix Your Laptop
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Sunday Tab -->
+                <div class="tab-content" id="sunday-tab">
+                    <div class="day-service-content">
+                        <div class="day-service-header">
+                            <h3><i class="fas fa-home"></i> Home Service Day</h3>
+                            <p>Convenient at-home computer service and support every Sunday</p>
+                        </div>
+                        
+                        <div class="service-highlights">
+                            <div class="highlight-card">
+                                <div class="highlight-icon">
+                                    <i class="fas fa-truck"></i>
+                                </div>
+                                <h4>Pickup & Delivery</h4>
+                                <p>Free pickup and delivery service for computer repair within city limits</p>
+                            </div>
+                            
+                            <div class="highlight-card">
+                                <div class="highlight-icon">
+                                    <i class="fas fa-home"></i>
+                                </div>
+                                <h4>At-Home Service</h4>
+                                <p>Professional technicians visit your home for on-site computer repair</p>
+                            </div>
+                            
+                            <div class="highlight-card">
+                                <div class="highlight-icon">
+                                    <i class="fas fa-user-cog"></i>
+                                </div>
+                                <h4>Personal Training</h4>
+                                <p>Basic computer operation training for seniors and beginners at home</p>
+                            </div>
+                        </div>
+                        
+                        <div class="pricing-box">
+                            <div class="pricing-header">
+                                <h4>Special Sunday Pricing</h4>
+                                <p>Valid only on Sundays</p>
+                            </div>
+                            <div class="price-list">
+                                <div class="price-item">
+                                    <span>Home Service Charge</span>
+                                    <span>₹299</span>
+                                </div>
+                                <div class="price-item">
+                                    <span>Basic Computer Training (1hr)</span>
+                                    <span>₹499</span>
+                                </div>
+                                <div class="price-item">
+                                    <span>Pickup & Delivery Service</span>
+                                    <span>FREE</span>
+                                </div>
+                                <div class="price-item">
+                                    <span>Emergency Home Service</span>
+                                    <span>₹799</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="day-action">
+                            <a href="tel:+918141515020" class="btn btn-primary">
+                                <i class="fas fa-home"></i> Book Home Service
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -2181,18 +2724,28 @@
     </div>
 
     <script>
-        // Mobile Menu Toggle
+        // Mobile Menu Toggle - FIXED
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
         const navLinks = document.querySelector('.nav-links');
         const navIcon = mobileMenuBtn.querySelector('i');
         
-        mobileMenuBtn.addEventListener('click', () => {
+        mobileMenuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
             navLinks.classList.toggle('active');
             
             if (navIcon.classList.contains('fa-bars')) {
                 navIcon.classList.remove('fa-bars');
                 navIcon.classList.add('fa-times');
             } else {
+                navIcon.classList.remove('fa-times');
+                navIcon.classList.add('fa-bars');
+            }
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                navLinks.classList.remove('active');
                 navIcon.classList.remove('fa-times');
                 navIcon.classList.add('fa-bars');
             }
@@ -2210,7 +2763,7 @@
         // Particles Effect for Hero Section
         function createParticles() {
             const particlesContainer = document.getElementById('particles');
-            const particleCount = 30;
+            const particleCount = window.innerWidth < 768 ? 15 : 30;
             
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
@@ -2247,7 +2800,7 @@
         // Initialize particles
         createParticles();
         
-        // Tabs Functionality
+        // Tabs Functionality for Daily Services
         const tabBtns = document.querySelectorAll('.tab-btn');
         const tabContents = document.querySelectorAll('.tab-content');
         
@@ -2262,6 +2815,13 @@
                 // Add active class to clicked button and corresponding content
                 btn.classList.add('active');
                 document.getElementById(`${day}-tab`).classList.add('active');
+                
+                // Scroll the active tab into view on mobile
+                if (window.innerWidth < 768) {
+                    setTimeout(() => {
+                        btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                    }, 100);
+                }
             });
         });
         
@@ -2377,7 +2937,7 @@
         
         renderTestimonials();
         
-        // Chatbot - FIXED AND ENHANCED
+        // Chatbot - WORKING PERFECTLY
         const chatbotBtn = document.querySelector('.chatbot-btn');
         const chatbotWindow = document.querySelector('.chatbot-window');
         const closeChat = document.querySelector('.close-chat');
@@ -2387,7 +2947,8 @@
         const quickReplies = document.querySelectorAll('.quick-reply');
         
         // Toggle chatbot window
-        chatbotBtn.addEventListener('click', () => {
+        chatbotBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
             chatbotWindow.classList.toggle('active');
         });
         
@@ -2496,20 +3057,22 @@
                     
                     // Add quick replies for certain responses
                     if (response === botResponses.services || response === botResponses.greeting) {
-                        const lastMessage = chatMessages.lastChild;
-                        const quickRepliesDiv = document.createElement('div');
-                        quickRepliesDiv.className = 'quick-replies';
-                        quickRepliesDiv.innerHTML = `
-                            <div class="quick-reply" data-reply="pricing">Service Pricing</div>
-                            <div class="quick-reply" data-reply="hours">Business Hours</div>
-                            <div class="quick-reply" data-reply="contact">Contact Info</div>
-                        `;
-                        lastMessage.appendChild(quickRepliesDiv);
-                        
-                        // Add event listeners to new quick replies
-                        lastMessage.querySelectorAll('.quick-reply').forEach(reply => {
-                            reply.addEventListener('click', handleQuickReply);
-                        });
+                        setTimeout(() => {
+                            const lastMessage = chatMessages.lastChild;
+                            const quickRepliesDiv = document.createElement('div');
+                            quickRepliesDiv.className = 'quick-replies';
+                            quickRepliesDiv.innerHTML = `
+                                <div class="quick-reply" data-reply="pricing">Service Pricing</div>
+                                <div class="quick-reply" data-reply="hours">Business Hours</div>
+                                <div class="quick-reply" data-reply="contact">Contact Info</div>
+                            `;
+                            lastMessage.appendChild(quickRepliesDiv);
+                            
+                            // Add event listeners to new quick replies
+                            lastMessage.querySelectorAll('.quick-reply').forEach(reply => {
+                                reply.addEventListener('click', handleQuickReply);
+                            });
+                        }, 100);
                     }
                 }, 1500);
             }
@@ -2605,9 +3168,39 @@
             window.open('tel:+918141515020', '_self');
         });
         
+        // WhatsApp Button
+        const whatsappBtn = document.querySelector('.whatsapp-btn');
+        
+        whatsappBtn.addEventListener('click', () => {
+            window.open('https://wa.me/918141515020', '_blank');
+        });
+        
         // Initialize everything when page loads
         document.addEventListener('DOMContentLoaded', () => {
             console.log('JAOC Website Loaded Successfully!');
+            
+            // Add scroll animation for elements
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe elements for animation
+            document.querySelectorAll('.service-card, .highlight-card, .blog-card').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(el);
+            });
         });
     </script>
 </body>
