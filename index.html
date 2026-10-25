@@ -3,25 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Jai Ambe Online Center (JAOC) - Professional computer repair, data recovery, networking, printing services in Valsad, Gujarat since 2010. Trusted by 5000+ customers.">
-    <meta name="keywords" content="computer repair Valsad, data recovery Valsad, JAOC, Jai Ambe Online Center, computer service Gujarat, laptop repair Valsad">
-    <meta name="author" content="Jai Ambe Online Center">
-    <meta name="theme-color" content="#dc3545">
+    <meta name="description" content="Jai Ambe Online Center (JAOC) - Premium computer repair, data recovery, networking & printing services in Valsad, Gujarat. 12+ years experience, 5000+ happy customers.">
+    <meta name="keywords" content="computer repair Valsad, data recovery, JAOC, laptop repair, computer service Gujarat">
+    <meta name="theme-color" content="#0a0e27">
+    <title>JAOC 2026 | જય અંબે ઓનલાઇન સેટર - Premium Computer Solutions</title>
     
-    <!-- Open Graph -->
-    <meta property="og:title" content="JAOC - Jai Ambe Online Center | Computer Solutions Valsad">
-    <meta property="og:description" content="Professional computer repair & services in Valsad since 2010. 12+ years experience, 5000+ happy customers.">
-    <meta property="og:type" content="website">
-    
-    <title>જય અંબે ઓનલાઇન સેટર - JAOC | Professional Computer Solutions</title>
-    
-    <!-- Preconnect for faster font loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+Gujarati:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- EmailJS for real email sending -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     
     <style>
         * {
@@ -31,55 +26,101 @@
         }
 
         :root {
-            --primary: #dc3545;
-            --primary-dark: #c82333;
-            --primary-light: #e74c5c;
-            --secondary: #2c3e50;
-            --accent: #f39c12;
-            --dark: #1a1a2e;
-            --dark-light: #2d2d44;
-            --light: #f8f9fa;
-            --gray: #6c757d;
-            --gray-light: #e9ecef;
-            --white: #ffffff;
-            --success: #28a745;
-            --shadow: 0 5px 20px rgba(0,0,0,0.05);
-            --shadow-hover: 0 10px 30px rgba(0,0,0,0.1);
+            --bg-primary: #0a0e27;
+            --bg-secondary: #151a35;
+            --bg-tertiary: #1e2542;
+            --primary: #ff3366;
+            --primary-glow: rgba(255, 51, 102, 0.4);
+            --secondary: #00d9ff;
+            --accent: #ffd60a;
+            --success: #00e676;
+            --text-primary: #ffffff;
+            --text-secondary: #b4b9d4;
+            --text-muted: #6b7194;
+            --border: rgba(255, 255, 255, 0.08);
+            --border-glow: rgba(0, 217, 255, 0.3);
+            --gradient-primary: linear-gradient(135deg, #ff3366 0%, #ff6b35 100%);
+            --gradient-secondary: linear-gradient(135deg, #00d9ff 0%, #00b4d8 100%);
+            --gradient-gold: linear-gradient(135deg, #ffd60a 0%, #ff9500 100%);
+            --shadow-glow: 0 0 40px rgba(255, 51, 102, 0.3);
         }
+
+        [data-theme="light"] {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fc;
+            --bg-tertiary: #eef1f8;
+            --text-primary: #0a0e27;
+            --text-secondary: #4a4f6e;
+            --text-muted: #8890b0;
+            --border: rgba(0, 0, 0, 0.08);
+        }
+
+        * { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background: var(--light);
-            color: var(--dark);
+            font-family: 'Plus Jakarta Sans', 'Noto Sans Gujarati', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
             overflow-x: hidden;
-            scroll-behavior: smooth;
+            transition: background 0.4s, color 0.4s;
         }
 
-        /* Accessibility - Focus States */
-        a:focus,
-        button:focus,
-        input:focus,
-        textarea:focus,
-        select:focus {
-            outline: 2px solid var(--primary);
-            outline-offset: 2px;
+        /* Animated Background Orbs */
+        .bg-orbs {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
         }
 
-        /* Skip to Content Link */
-        .skip-link {
+        .orb {
             position: absolute;
-            top: -50px;
-            left: 0;
-            background: var(--primary);
-            color: white;
-            padding: 10px 20px;
-            z-index: 9999;
-            text-decoration: none;
-            border-radius: 0 0 8px 0;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.4;
+            animation: floatOrb 20s infinite ease-in-out;
         }
 
-        .skip-link:focus {
+        .orb-1 { width: 400px; height: 400px; background: #ff3366; top: -100px; left: -100px; }
+        .orb-2 { width: 500px; height: 500px; background: #00d9ff; bottom: -200px; right: -200px; animation-delay: -5s; }
+        .orb-3 { width: 300px; height: 300px; background: #ffd60a; top: 50%; left: 50%; animation-delay: -10s; }
+
+        @keyframes floatOrb {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(50px, -50px) scale(1.1); }
+            66% { transform: translate(-50px, 50px) scale(0.9); }
+        }
+
+        /* Custom cursor glow */
+        .cursor-glow {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 51, 102, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            transform: translate(-50%, -50%);
+            transition: transform 0.15s ease-out;
+            display: none;
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            .cursor-glow { display: block; }
+        }
+
+        /* Scroll Progress */
+        .scroll-progress {
+            position: fixed;
             top: 0;
+            left: 0;
+            height: 3px;
+            width: 0%;
+            background: var(--gradient-primary);
+            z-index: 10000;
+            box-shadow: 0 0 10px var(--primary);
         }
 
         /* Header */
@@ -88,696 +129,1118 @@
             top: 0;
             left: 0;
             width: 100%;
-            background: var(--white);
-            box-shadow: var(--shadow);
+            padding: 20px 5%;
             z-index: 1000;
-            transition: box-shadow 0.3s ease;
+            transition: all 0.4s;
         }
 
-        .header-scrolled {
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        header.scrolled {
+            padding: 12px 5%;
+            background: rgba(10, 14, 39, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        [data-theme="light"] header.scrolled {
+            background: rgba(255, 255, 255, 0.85);
         }
 
         .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 15px 5%;
+            gap: 20px;
         }
 
         .logo {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
             text-decoration: none;
+            color: inherit;
             flex-shrink: 0;
         }
 
         .logo-icon {
             width: 50px;
             height: 50px;
-            background: var(--primary);
-            border-radius: 12px;
+            background: var(--gradient-primary);
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-shrink: 0;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 24px var(--primary-glow);
+        }
+
+        .logo-icon::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            transform: translateX(-100%);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0%, 100% { transform: translateX(-100%); }
+            50% { transform: translateX(100%); }
         }
 
         .logo-icon i {
             font-size: 1.6rem;
             color: white;
+            z-index: 1;
         }
 
         .logo-text h1 {
+            font-family: 'Syne', 'Noto Sans Gujarati', sans-serif;
             font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--primary);
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
             line-height: 1.2;
         }
 
-        .logo-text .english {
-            font-size: 0.7rem;
-            color: var(--gray);
+        .logo-text p {
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            font-weight: 500;
         }
 
         .nav-links {
             display: flex;
-            gap: 30px;
+            gap: 8px;
             list-style: none;
+            padding: 6px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
         }
 
         .nav-links a {
             text-decoration: none;
-            color: var(--dark);
-            font-weight: 500;
-            transition: color 0.3s ease;
-            padding: 5px 0;
+            color: var(--text-secondary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 8px 18px;
+            border-radius: 50px;
+            transition: all 0.3s;
+            display: block;
         }
 
         .nav-links a:hover {
-            color: var(--primary);
+            color: var(--text-primary);
+            background: var(--bg-tertiary);
         }
 
-        .mobile-menu {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--dark);
-            background: none;
-            border: none;
-            padding: 5px;
-            z-index: 1001;
-        }
-
-        /* Back to Top Button */
-        .back-to-top {
-            position: fixed;
-            bottom: 100px;
-            left: 30px;
-            width: 45px;
-            height: 45px;
-            background: var(--primary);
+        .nav-links a.active {
+            background: var(--gradient-primary);
             color: white;
-            border: none;
+            box-shadow: 0 4px 15px var(--primary-glow);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .theme-toggle {
+            width: 42px;
+            height: 42px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
             border-radius: 50%;
+            color: var(--text-primary);
+            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--primary);
+            transform: rotate(20deg);
+        }
+
+        .btn-cta {
+            padding: 12px 24px;
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
             cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            z-index: 999;
-            box-shadow: var(--shadow-hover);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 20px var(--primary-glow);
         }
 
-        .back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
+        .btn-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px var(--primary-glow);
         }
 
-        .back-to-top:hover {
-            background: var(--primary-dark);
-            transform: translateY(-3px);
+        .mobile-menu-btn {
+            display: none;
+            width: 42px;
+            height: 42px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            color: var(--text-primary);
+            cursor: pointer;
+            font-size: 1.1rem;
         }
 
-        /* Hero Section */
+        /* Hero */
         .hero {
-            padding: 140px 5% 80px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            padding: 160px 5% 80px;
+            position: relative;
+            overflow: hidden;
         }
 
         .hero-container {
             max-width: 1400px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 60px;
             align-items: center;
         }
 
         .hero-badge {
-            display: inline-block;
-            background: rgba(0,0,0,0.15);
-            padding: 6px 18px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 18px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-glow);
             border-radius: 50px;
             font-size: 0.85rem;
-            margin-bottom: 20px;
-            color: white;
             font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+
+        .hero-badge .dot {
+            width: 8px;
+            height: 8px;
+            background: var(--success);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--success);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.2); }
         }
 
         .hero h1 {
-            font-size: 2.8rem;
-            color: white;
-            margin-bottom: 15px;
-            line-height: 1.2;
+            font-family: 'Syne', sans-serif;
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin-bottom: 20px;
         }
 
-        .hero h1 .gujarati-hero {
-            font-size: 1.8rem;
+        .hero h1 .gradient-text {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero h1 .gujarati-line {
             display: block;
-            margin-top: 5px;
+            font-family: 'Noto Sans Gujarati', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--secondary);
+            margin-top: 12px;
+            letter-spacing: 0;
         }
 
         .hero p {
-            font-size: 1rem;
-            color: rgba(255,255,255,0.95);
-            margin-bottom: 25px;
-            line-height: 1.6;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            max-width: 560px;
         }
 
         .hero-buttons {
             display: flex;
-            gap: 15px;
+            gap: 14px;
             flex-wrap: wrap;
-        }
-
-        .btn-primary {
-            padding: 12px 30px;
-            background: var(--white);
-            color: var(--primary);
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            border: 2px solid var(--white);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        .btn-secondary {
-            padding: 12px 30px;
-            background: transparent;
-            border: 2px solid white;
-            color: white;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255,255,255,0.15);
-            transform: translateY(-2px);
-        }
-
-        .stats-mini {
-            display: flex;
-            gap: 30px;
-            margin-top: 30px;
-            flex-wrap: wrap;
-        }
-
-        .stat-mini {
-            text-align: center;
-        }
-
-        .stat-mini h3 {
-            font-size: 1.5rem;
-            color: white;
-        }
-
-        .stat-mini p {
-            font-size: 0.8rem;
-            margin-bottom: 0;
-            color: rgba(255,255,255,0.9);
-        }
-
-        .hero-image {
-            background: rgba(255,255,255,0.1);
-            border-radius: 20px;
-            padding: 40px;
-            text-align: center;
-        }
-
-        .hero-image i {
-            font-size: 8rem;
-            color: white;
-            opacity: 0.9;
-        }
-
-        /* Section Styles */
-        .section-header {
-            text-align: center;
             margin-bottom: 50px;
         }
 
-        .section-header h2 {
+        .btn-primary, .btn-secondary, .btn-ghost {
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+            box-shadow: 0 8px 24px var(--primary-glow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px var(--primary-glow);
+        }
+
+        .btn-secondary {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--secondary);
+            color: var(--secondary);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .hero-stat h3 {
+            font-family: 'Syne', sans-serif;
             font-size: 2.2rem;
-            margin-bottom: 15px;
-            color: var(--dark);
+            font-weight: 800;
+            background: var(--gradient-secondary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+        }
+
+        .hero-stat p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin: 6px 0 0;
+            font-weight: 500;
+        }
+
+        /* Hero Visual - Card Stack */
+        .hero-visual {
+            position: relative;
+            height: 500px;
+            perspective: 1000px;
+        }
+
+        .floating-card {
+            position: absolute;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 24px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            transition: transform 0.4s;
+        }
+
+        .card-1 {
+            top: 0;
+            left: 0;
+            width: 280px;
+            animation: float1 6s ease-in-out infinite;
+        }
+
+        .card-2 {
+            top: 60px;
+            right: 0;
+            width: 240px;
+            animation: float2 7s ease-in-out infinite;
+        }
+
+        .card-3 {
+            bottom: 40px;
+            left: 40px;
+            width: 260px;
+            animation: float3 8s ease-in-out infinite;
+        }
+
+        @keyframes float1 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+        @keyframes float2 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(20px); } }
+        @keyframes float3 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--gradient-primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 14px;
+        }
+
+        .card-icon.secondary { background: var(--gradient-secondary); }
+        .card-icon.gold { background: var(--gradient-gold); }
+
+        .card-icon i { font-size: 1.4rem; color: white; }
+
+        .floating-card h4 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1rem;
+            margin-bottom: 6px;
+        }
+
+        .floating-card p {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        .card-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            background: rgba(0, 230, 118, 0.15);
+            color: var(--success);
+            font-size: 0.7rem;
+            font-weight: 600;
+            border-radius: 20px;
+            margin-top: 10px;
+        }
+
+        /* Section Header */
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-header h2 {
+            font-family: 'Syne', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 16px;
+            line-height: 1.15;
         }
 
         .section-header p {
-            color: var(--gray);
+            color: var(--text-secondary);
+            font-size: 1.05rem;
             max-width: 600px;
             margin: 0 auto;
         }
 
-        /* Services Section */
+        /* Marquee Strip */
+        .marquee-strip {
+            padding: 24px 0;
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .marquee-track {
+            display: flex;
+            gap: 60px;
+            animation: scroll 30s linear infinite;
+            white-space: nowrap;
+        }
+
+        .marquee-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+        }
+
+        .marquee-item i {
+            color: var(--primary);
+            font-size: 1rem;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Services */
         .services-section {
-            padding: 80px 5%;
-            background: var(--white);
+            padding: 100px 5%;
+            position: relative;
         }
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 24px;
             max-width: 1400px;
             margin: 0 auto;
         }
 
         .service-card {
-            background: var(--white);
-            border-radius: 12px;
-            padding: 35px;
-            transition: all 0.3s ease;
-            border: 1px solid var(--gray-light);
-            box-shadow: var(--shadow);
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 36px 32px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s;
+            cursor: pointer;
         }
 
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s;
+        }
+
+        .service-card:hover::before { transform: scaleX(1); }
+
         .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
-            border-color: var(--primary-light);
+            transform: translateY(-8px);
+            border-color: var(--border-glow);
+            box-shadow: 0 20px 60px rgba(0, 217, 255, 0.1);
         }
 
         .service-icon {
-            width: 70px;
-            height: 70px;
-            background: var(--primary);
-            border-radius: 12px;
+            width: 68px;
+            height: 68px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
+            transition: all 0.4s;
+        }
+
+        .service-card:hover .service-icon {
+            background: var(--gradient-primary);
+            border-color: transparent;
+            transform: rotate(-8deg) scale(1.05);
         }
 
         .service-icon i {
-            font-size: 2rem;
-            color: white;
+            font-size: 1.7rem;
+            color: var(--primary);
+            transition: color 0.4s;
         }
 
+        .service-card:hover .service-icon i { color: white; }
+
         .service-card h3 {
+            font-family: 'Syne', sans-serif;
             font-size: 1.4rem;
-            margin-bottom: 10px;
-            color: var(--dark);
+            margin-bottom: 12px;
+            font-weight: 700;
         }
 
         .service-card p {
-            color: var(--gray);
-            margin-bottom: 15px;
-            line-height: 1.5;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 24px;
+        }
+
+        .service-features li {
+            padding: 6px 0;
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .service-features i {
+            color: var(--success);
+            font-size: 0.75rem;
+        }
+
+        .service-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
         }
 
         .service-price {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin: 15px 0;
+            font-family: 'Syne', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--gradient-secondary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .service-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--primary);
+        .service-price small {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            -webkit-text-fill-color: var(--text-muted);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 500;
+            margin-left: 4px;
+        }
+
+        .service-book {
+            padding: 8px 16px;
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+            border-radius: 10px;
             text-decoration: none;
+            font-size: 0.85rem;
             font-weight: 600;
-            transition: gap 0.3s ease;
+            transition: all 0.3s;
         }
 
-        .service-link:hover {
-            gap: 12px;
+        .service-book:hover {
+            background: var(--gradient-primary);
+            border-color: transparent;
         }
 
         /* Daily Services */
         .daily-section {
-            padding: 80px 5%;
-            background: var(--gray-light);
+            padding: 100px 5%;
+            background: var(--bg-secondary);
+            position: relative;
+            overflow: hidden;
         }
 
         .daily-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
             max-width: 1400px;
             margin: 0 auto;
         }
 
         .daily-card {
-            background: var(--white);
-            border-radius: 12px;
-            padding: 25px;
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 28px 24px;
             text-align: center;
-            transition: all 0.3s ease;
-            border: 1px solid var(--gray-light);
-            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+            cursor: pointer;
         }
 
+        .daily-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--gradient-primary);
+            opacity: 0;
+            z-index: 0;
+            transition: opacity 0.3s;
+        }
+
+        .daily-card:hover::after { opacity: 0.08; }
         .daily-card:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-hover);
-            border-left: 3px solid var(--primary);
+            transform: translateY(-6px);
+            border-color: var(--primary);
+            box-shadow: 0 15px 40px var(--primary-glow);
         }
 
-        .daily-card i {
-            font-size: 2rem;
-            margin-bottom: 15px;
-            color: var(--primary);
+        .daily-card > * { position: relative; z-index: 1; }
+
+        .daily-day {
+            display: inline-block;
+            padding: 4px 12px;
+            background: var(--bg-tertiary);
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--secondary);
+            margin-bottom: 16px;
         }
+
+        .daily-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--gradient-primary);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            box-shadow: 0 8px 24px var(--primary-glow);
+        }
+
+        .daily-icon i { font-size: 1.4rem; color: white; }
 
         .daily-card h3 {
-            font-size: 1.2rem;
-            color: var(--dark);
-            margin-bottom: 5px;
+            font-family: 'Syne', sans-serif;
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+            font-weight: 700;
         }
 
         .daily-card p {
-            color: var(--gray);
-            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-bottom: 14px;
         }
 
         .daily-price {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--primary);
-            margin-top: 10px;
-        }
-
-        /* Location Section */
-        .location-section {
-            padding: 60px 5%;
-            background: var(--white);
-        }
-
-        .location-card {
-            max-width: 800px;
-            margin: 0 auto;
-            background: var(--white);
-            border-radius: 12px;
-            padding: 30px;
-            text-align: center;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--gray-light);
-        }
-
-        .location-card i {
-            font-size: 2rem;
-            color: var(--primary);
-            margin-bottom: 15px;
-        }
-
-        .location-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-        }
-
-        .location-card .gujarati-address {
-            font-size: 1.1rem;
-            font-weight: 500;
-            margin: 10px 0;
-            color: var(--primary);
-        }
-
-        .location-card p {
-            color: var(--gray);
-        }
-
-        .location-card a {
-            color: var(--primary);
-            text-decoration: none;
-        }
-
-        .location-card a:hover {
-            text-decoration: underline;
+            display: inline-block;
+            padding: 6px 14px;
+            background: rgba(0, 230, 118, 0.1);
+            color: var(--success);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
         }
 
         /* Testimonials */
         .testimonials-section {
-            padding: 80px 5%;
-            background: var(--gray-light);
+            padding: 100px 5%;
         }
 
         .testimonials-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
             max-width: 1400px;
             margin: 0 auto;
         }
 
         .testimonial-card {
-            background: var(--white);
-            border-radius: 12px;
-            padding: 30px;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow);
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 32px;
+            position: relative;
+            transition: all 0.3s;
         }
 
         .testimonial-card:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-hover);
+            border-color: var(--border-glow);
+            transform: translateY(-5px);
+        }
+
+        .testimonial-quote {
+            position: absolute;
+            top: 20px;
+            right: 24px;
+            font-size: 4rem;
+            color: var(--primary);
+            opacity: 0.15;
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 16px;
+            color: var(--accent);
         }
 
         .testimonial-text {
-            font-style: italic;
-            margin-bottom: 20px;
-            line-height: 1.6;
-            color: var(--dark);
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 24px;
+            font-size: 0.95rem;
+            position: relative;
+            z-index: 1;
         }
 
         .testimonial-author {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 14px;
         }
 
         .author-avatar {
-            width: 50px;
-            height: 50px;
-            background: var(--primary);
+            width: 48px;
+            height: 48px;
+            background: var(--gradient-primary);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-weight: bold;
+            font-weight: 700;
+            font-size: 1rem;
             flex-shrink: 0;
         }
 
-        /* Blog Section */
+        .author-info h4 {
+            font-size: 0.95rem;
+            margin-bottom: 2px;
+        }
+
+        .author-info p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Blog */
         .blog-section {
-            padding: 80px 5%;
-            background: var(--white);
+            padding: 100px 5%;
+            background: var(--bg-secondary);
         }
 
         .blog-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
+            gap: 24px;
             max-width: 1400px;
             margin: 0 auto;
         }
 
         .blog-card {
-            background: var(--white);
-            border-radius: 12px;
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: 24px;
             overflow: hidden;
-            transition: all 0.3s ease;
-            border: 1px solid var(--gray-light);
-            box-shadow: var(--shadow);
+            transition: all 0.3s;
+            cursor: pointer;
         }
 
         .blog-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
+            transform: translateY(-6px);
+            border-color: var(--border-glow);
+            box-shadow: 0 20px 50px rgba(0, 217, 255, 0.1);
         }
 
-        .blog-img {
+        .blog-thumb {
             height: 180px;
-            background: var(--primary);
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
+            overflow: hidden;
         }
 
-        .blog-img i {
-            font-size: 3rem;
+        .blog-thumb.theme-1 { background: var(--gradient-primary); }
+        .blog-thumb.theme-2 { background: var(--gradient-secondary); }
+        .blog-thumb.theme-3 { background: var(--gradient-gold); }
+
+        .blog-thumb i {
+            font-size: 3.5rem;
             color: white;
+            transition: transform 0.4s;
         }
 
-        .blog-content {
-            padding: 25px;
-        }
+        .blog-card:hover .blog-thumb i { transform: scale(1.2) rotate(8deg); }
+
+        .blog-content { padding: 24px; }
 
         .blog-meta {
             display: flex;
-            gap: 15px;
-            margin-bottom: 15px;
-            font-size: 0.8rem;
-            color: var(--gray);
+            gap: 14px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        .blog-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
 
         .blog-content h3 {
+            font-family: 'Syne', sans-serif;
             font-size: 1.2rem;
             margin-bottom: 10px;
-            color: var(--dark);
+            line-height: 1.35;
         }
 
         .blog-content p {
-            color: var(--gray);
-            line-height: 1.5;
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
         }
 
-        .blog-link {
+        .blog-read {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.88rem;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            color: var(--primary);
-            text-decoration: none;
-            margin-top: 15px;
-            font-weight: 600;
+            gap: 6px;
+            transition: gap 0.3s;
         }
 
-        .blog-link:hover {
-            text-decoration: underline;
-        }
+        .blog-read:hover { gap: 12px; }
 
-        /* Contact Section */
+        /* Contact */
         .contact-section {
-            padding: 80px 5%;
-            background: var(--primary);
+            padding: 100px 5%;
+            position: relative;
         }
 
         .contact-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0;
             max-width: 1200px;
             margin: 0 auto;
-            background: var(--white);
-            border-radius: 16px;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 40px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 32px;
             overflow: hidden;
-            box-shadow: var(--shadow-hover);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
         }
 
         .contact-info {
-            padding: 40px;
-            background: var(--primary);
-            color: white;
+            padding: 48px 40px;
+            background: linear-gradient(135deg, rgba(255, 51, 102, 0.08) 0%, rgba(0, 217, 255, 0.05) 100%);
+            position: relative;
+        }
+
+        .contact-info::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: var(--gradient-primary);
         }
 
         .contact-info h3 {
-            font-size: 1.6rem;
-            margin-bottom: 20px;
+            font-family: 'Syne', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 8px;
         }
 
-        .info-item {
+        .contact-info > p {
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            font-size: 0.95rem;
+        }
+
+        .contact-item {
             display: flex;
-            align-items: flex-start;
-            gap: 15px;
-            margin: 25px 0;
+            gap: 16px;
+            margin-bottom: 26px;
         }
 
-        .info-item i {
-            width: 40px;
-            height: 40px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 50%;
+        .contact-item-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
+            color: var(--primary);
             flex-shrink: 0;
         }
 
-        .info-item h4 {
-            margin-bottom: 5px;
-            font-size: 1rem;
+        .contact-item h4 {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+            font-weight: 600;
         }
 
-        .info-item a {
-            color: white;
+        .contact-item a, .contact-item p {
+            color: var(--text-primary);
             text-decoration: none;
+            font-size: 0.92rem;
+            font-weight: 500;
+            line-height: 1.5;
         }
 
-        .info-item a:hover {
-            text-decoration: underline;
+        .contact-item a:hover { color: var(--primary); }
+
+        .contact-socials {
+            display: flex;
+            gap: 10px;
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+        }
+
+        .social-btn {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-btn:hover {
+            background: var(--gradient-primary);
+            color: white;
+            border-color: transparent;
+            transform: translateY(-3px);
         }
 
         .contact-form {
-            padding: 40px;
+            padding: 48px 40px;
+        }
+
+        .contact-form h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 6px;
+        }
+
+        .contact-form > p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 28px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .form-group label .req { color: var(--primary); }
 
         .form-group input,
         .form-group textarea,
         .form-group select {
             width: 100%;
-            padding: 12px 15px;
-            border: 1px solid var(--gray-light);
-            border-radius: 8px;
+            padding: 14px 16px;
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text-primary);
             font-family: inherit;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-            background: white;
+            font-size: 0.92rem;
+            transition: all 0.3s;
         }
 
         .form-group input:focus,
         .form-group textarea:focus,
         .form-group select:focus {
+            outline: none;
             border-color: var(--primary);
+            box-shadow: 0 0 0 3px var(--primary-glow);
         }
 
         .form-group input.error,
-        .form-group textarea.error {
-            border-color: var(--primary);
-            background: #fff5f5;
+        .form-group textarea.error,
+        .form-group select.error {
+            border-color: #ff4757;
+            background: rgba(255, 71, 87, 0.05);
         }
+
+        .form-group textarea { resize: vertical; min-height: 100px; }
 
         .form-error {
-            color: var(--primary);
-            font-size: 0.8rem;
-            margin-top: 5px;
             display: none;
+            color: #ff4757;
+            font-size: 0.78rem;
+            margin-top: 6px;
+            font-weight: 500;
         }
 
-        .form-error.visible {
-            display: block;
-        }
+        .form-error.show { display: block; }
 
         .submit-btn {
             width: 100%;
-            padding: 14px;
-            background: var(--primary);
+            padding: 16px;
+            background: var(--gradient-primary);
             border: none;
-            border-radius: 8px;
+            border-radius: 12px;
             color: white;
-            font-weight: 600;
+            font-weight: 700;
+            font-size: 0.95rem;
             cursor: pointer;
-            font-size: 1rem;
-            transition: all 0.3s ease;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 8px 24px var(--primary-glow);
         }
 
         .submit-btn:hover:not(:disabled) {
-            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px var(--primary-glow);
         }
 
         .submit-btn:disabled {
@@ -785,1079 +1248,1430 @@
             cursor: not-allowed;
         }
 
+        .form-status {
+            display: none;
+            padding: 14px 18px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            margin-top: 16px;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-status.show { display: flex; }
+
+        .form-status.success {
+            background: rgba(0, 230, 118, 0.1);
+            border: 1px solid rgba(0, 230, 118, 0.3);
+            color: var(--success);
+        }
+
+        .form-status.error {
+            background: rgba(255, 71, 87, 0.1);
+            border: 1px solid rgba(255, 71, 87, 0.3);
+            color: #ff4757;
+        }
+
+        /* EmailJS Setup Notice */
+        .setup-notice {
+            background: rgba(255, 214, 10, 0.1);
+            border: 1px solid rgba(255, 214, 10, 0.3);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 20px;
+            font-size: 0.82rem;
+            color: var(--accent);
+            display: none;
+        }
+
+        .setup-notice.show { display: block; }
+
+        .setup-notice strong { display: block; margin-bottom: 6px; }
+
         /* Footer */
         footer {
-            background: var(--dark);
-            color: white;
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
             padding: 60px 5% 30px;
         }
 
         .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
             max-width: 1400px;
             margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
         }
 
         .footer-col h4 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1rem;
             margin-bottom: 20px;
-            font-size: 1.2rem;
+            color: var(--text-primary);
+        }
+
+        .footer-col p {
+            color: var(--text-secondary);
+            font-size: 0.88rem;
+            line-height: 1.7;
+            margin-bottom: 16px;
         }
 
         .footer-links {
             list-style: none;
         }
 
-        .footer-links li {
-            margin: 10px 0;
-        }
+        .footer-links li { margin-bottom: 10px; }
 
         .footer-links a {
-            color: var(--gray);
+            color: var(--text-secondary);
             text-decoration: none;
-            transition: color 0.3s ease;
+            font-size: 0.88rem;
+            transition: color 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .footer-links a:hover {
-            color: var(--primary);
-        }
+        .footer-links a:hover { color: var(--primary); }
+        .footer-links a::before { content: '→'; opacity: 0; transition: opacity 0.3s; }
+        .footer-links a:hover::before { opacity: 1; }
 
-        .footer-col p {
-            color: var(--gray);
-            line-height: 1.8;
-        }
-
-        .social-icons {
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 30px;
+            border-top: 1px solid var(--border);
             display: flex;
-            gap: 12px;
-            margin-top: 20px;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
         }
 
-        .social-icons a {
-            width: 36px;
-            height: 36px;
-            background: rgba(255,255,255,0.1);
+        .footer-bottom p {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+        }
+
+        .footer-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            background: var(--bg-tertiary);
+            border-radius: 20px;
+            font-size: 0.78rem;
+            color: var(--text-secondary);
+        }
+
+        .footer-badge i { color: var(--success); }
+
+        /* Floating Buttons */
+        .floating-actions {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 999;
+        }
+
+        .float-btn {
+            width: 52px;
+            height: 52px;
             border-radius: 50%;
+            border: none;
+            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s ease;
+            font-size: 1.3rem;
             color: white;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s;
         }
 
-        .social-icons a:hover {
-            background: var(--primary);
-            transform: translateY(-2px);
+        .float-btn:hover { transform: scale(1.1); }
+
+        .whatsapp-btn { background: #25D366; }
+        .chatbot-btn { background: var(--gradient-primary); }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 24px;
+            left: 24px;
+            width: 48px;
+            height: 48px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            color: var(--text-primary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 999;
         }
 
-        .copyright {
-            text-align: center;
-            padding-top: 40px;
-            margin-top: 40px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            color: var(--gray);
-            font-size: 0.85rem;
-        }
+        .back-to-top.show { opacity: 1; visibility: visible; }
+        .back-to-top:hover { border-color: var(--primary); color: var(--primary); }
 
         /* Chatbot */
-        .chatbot {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 1000;
-        }
-
-        .chat-toggle {
-            width: 55px;
-            height: 55px;
-            background: var(--primary);
-            border: none;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: var(--shadow-hover);
-            transition: all 0.3s ease;
-        }
-
-        .chat-toggle:hover {
-            transform: scale(1.05);
-            background: var(--primary-dark);
-        }
-
-        .chat-toggle i {
-            font-size: 1.5rem;
-            color: white;
-        }
-
         .chat-window {
-            position: absolute;
-            bottom: 70px;
-            right: 0;
-            width: 320px;
-            height: 450px;
-            background: var(--white);
-            border-radius: 12px;
-            box-shadow: var(--shadow-hover);
+            position: fixed;
+            bottom: 90px;
+            right: 24px;
+            width: 380px;
+            height: 550px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 24px;
             display: none;
             flex-direction: column;
+            z-index: 1000;
             overflow: hidden;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
         }
 
-        .chat-window.active {
-            display: flex;
+        .chat-window.open { display: flex; animation: slideIn 0.3s ease; }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .chat-header {
-            background: var(--primary);
-            padding: 15px;
+            padding: 20px 22px;
+            background: var(--gradient-primary);
             color: white;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .close-chat-btn {
-            background: none;
-            border: none;
-            color: white;
-            cursor: pointer;
-            font-size: 1.2rem;
-            padding: 5px;
-        }
-
-        .chat-messages {
-            flex: 1;
-            padding: 15px;
-            overflow-y: auto;
-            background: var(--gray-light);
+        .chat-header-info {
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            gap: 12px;
         }
 
-        .message {
-            margin: 8px 0;
-            padding: 10px 15px;
-            border-radius: 12px;
-            max-width: 85%;
-            font-size: 0.85rem;
-            line-height: 1.4;
-            word-wrap: break-word;
-        }
-
-        .bot-message {
-            background: var(--white);
-            align-self: flex-start;
-        }
-
-        .user-message {
-            background: var(--primary);
-            color: white;
-            align-self: flex-end;
-            margin-left: auto;
-        }
-
-        .typing-indicator {
-            display: inline-block;
-        }
-
-        .typing-indicator::after {
-            content: '...';
-            animation: dots 1.5s steps(4, end) infinite;
-        }
-
-        @keyframes dots {
-            0%, 20% { content: ''; }
-            40% { content: '.'; }
-            60% { content: '..'; }
-            80%, 100% { content: '...'; }
-        }
-
-        .chat-input {
-            display: flex;
-            padding: 12px;
-            border-top: 1px solid var(--gray-light);
-            background: var(--white);
-        }
-
-        .chat-input input {
-            flex: 1;
-            padding: 10px;
-            border: 1px solid var(--gray-light);
-            border-radius: 8px;
-            outline: none;
-            font-family: inherit;
-        }
-
-        .chat-input button {
+        .chat-avatar {
             width: 40px;
             height: 40px;
-            background: var(--primary);
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chat-header-info h4 { font-size: 1rem; font-family: 'Syne', sans-serif; }
+
+        .chat-status {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.75rem;
+            opacity: 0.95;
+            margin-top: 2px;
+        }
+
+        .chat-status .dot {
+            width: 6px;
+            height: 6px;
+            background: #00e676;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .chat-close {
+            background: transparent;
             border: none;
-            border-radius: 8px;
-            margin-left: 8px;
-            cursor: pointer;
             color: white;
-            transition: background 0.3s ease;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 4px;
         }
 
-        .chat-input button:hover {
-            background: var(--primary-dark);
+        .chat-body {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background: var(--bg-primary);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
         }
 
-        .chat-input button:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
+        .chat-msg {
+            max-width: 82%;
+            padding: 12px 16px;
+            border-radius: 16px;
+            font-size: 0.88rem;
+            line-height: 1.5;
+            word-wrap: break-word;
+            animation: msgIn 0.3s ease;
         }
+
+        @keyframes msgIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .chat-msg.bot {
+            background: var(--bg-secondary);
+            align-self: flex-start;
+            border-bottom-left-radius: 6px;
+        }
+
+        .chat-msg.user {
+            background: var(--gradient-primary);
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 6px;
+        }
+
+        .chat-quick {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .quick-btn {
+            padding: 6px 12px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .quick-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: transparent;
+        }
+
+        .chat-input-wrap {
+            padding: 14px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            gap: 8px;
+            background: var(--bg-secondary);
+        }
+
+        .chat-input-wrap input {
+            flex: 1;
+            padding: 12px 16px;
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 0.88rem;
+        }
+
+        .chat-input-wrap input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .chat-send {
+            width: 44px;
+            height: 44px;
+            background: var(--gradient-primary);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .chat-send:disabled { opacity: 0.5; cursor: not-allowed; }
+        .chat-send:hover:not(:disabled) { transform: scale(1.05); }
+
+        .typing-dots {
+            display: inline-flex;
+            gap: 4px;
+            padding: 4px 0;
+        }
+
+        .typing-dots span {
+            width: 6px;
+            height: 6px;
+            background: var(--text-secondary);
+            border-radius: 50%;
+            animation: bounce 1.4s infinite;
+        }
+
+        .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes bounce {
+            0%, 80%, 100% { transform: translateY(0); opacity: 0.5; }
+            40% { transform: translateY(-6px); opacity: 1; }
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 90px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--bg-secondary);
+            border: 1px solid var(--success);
+            color: var(--text-primary);
+            padding: 14px 22px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            z-index: 10000;
+            opacity: 0;
+            transition: all 0.4s;
+            pointer-events: none;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .toast i { color: var(--success); font-size: 1.2rem; }
 
         /* Responsive */
-        @media (max-width: 992px) {
-            .hero-container {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            
-            .hero-buttons {
-                justify-content: center;
-            }
-            
-            .stats-mini {
-                justify-content: center;
-            }
-            
-            .hero-image {
-                display: none;
-            }
-            
-            .contact-container {
-                grid-template-columns: 1fr;
-            }
+        @media (max-width: 1024px) {
+            .hero-container { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+            .hero-buttons { justify-content: center; }
+            .hero-stats { justify-content: center; }
+            .hero-visual { display: none; }
+            .contact-container { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
         }
 
         @media (max-width: 768px) {
             .nav-links {
                 position: fixed;
-                top: 70px;
-                left: -100%;
-                width: 75%;
-                height: calc(100vh - 70px);
-                background: var(--white);
+                top: 80px;
+                right: -100%;
+                width: 85%;
+                height: calc(100vh - 80px);
+                background: var(--bg-secondary);
                 flex-direction: column;
-                padding: 30px;
-                transition: left 0.3s ease;
-                z-index: 999;
-                box-shadow: var(--shadow-hover);
+                padding: 24px;
+                border-radius: 24px 0 0 24px;
+                border: 1px solid var(--border);
+                transition: right 0.4s ease;
                 overflow-y: auto;
+                gap: 6px;
             }
-            
-            .nav-links.active {
-                left: 0;
-            }
-            
-            .mobile-menu {
-                display: block;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .hero h1 .gujarati-hero {
-                font-size: 1.4rem;
-            }
-            
-            .hero {
-                padding: 110px 5% 60px;
-            }
-            
-            .section-header h2 {
-                font-size: 1.8rem;
-            }
-            
-            .services-grid, .daily-grid, .testimonials-grid, .blog-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .chat-window {
-                width: calc(100vw - 40px);
-                right: -10px;
-            }
-
-            .back-to-top {
-                bottom: 90px;
-                left: 20px;
-                width: 40px;
-                height: 40px;
-            }
+            .nav-links.open { right: 0; }
+            .nav-links a { padding: 14px 20px; text-align: left; }
+            .mobile-menu-btn { display: flex; align-items: center; justify-content: center; }
+            .btn-cta { display: none; }
+            .hero { padding: 120px 5% 60px; }
+            .hero h1 { font-size: 2.5rem; letter-spacing: -1px; }
+            .hero h1 .gujarati-line { font-size: 1.3rem; }
+            .section-header h2 { font-size: 2rem; }
+            .form-row { grid-template-columns: 1fr; }
+            .contact-info, .contact-form { padding: 32px 24px; }
+            .chat-window { width: calc(100vw - 20px); right: 10px; height: 500px; }
+            .services-grid, .daily-grid, .testimonials-grid, .blog-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .hero-stats { gap: 24px; }
+            .hero-stat h3 { font-size: 1.6rem; }
         }
 
-        @media (max-width: 400px) {
-            .logo-text h1 {
-                font-size: 1rem;
-            }
-            
-            .logo-icon {
-                width: 42px;
-                height: 42px;
-            }
-            
-            .logo-icon i {
-                font-size: 1.3rem;
-            }
-            
-            .hero h1 {
-                font-size: 1.7rem;
-            }
-            
-            .stats-mini {
-                gap: 20px;
-            }
-            
-            .stat-mini h3 {
-                font-size: 1.2rem;
-            }
+        @media (max-width: 420px) {
+            .logo-text h1 { font-size: 1rem; }
+            .logo-icon { width: 42px; height: 42px; }
+            .hero h1 { font-size: 2rem; }
+            .hero h1 .gujarali-line { font-size: 1.1rem; }
         }
 
-        /* Reduced motion for accessibility */
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after {
                 animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
                 transition-duration: 0.01ms !important;
-                scroll-behavior: auto !important;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Skip to Content (Accessibility) -->
-    <a href="#main-content" class="skip-link">Skip to main content</a>
+<div class="bg-orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+</div>
 
-    <!-- Header -->
-    <header>
-        <div class="header-container">
-            <a href="#home" class="logo" aria-label="JAOC Home">
-                <div class="logo-icon">
-                    <i class="fas fa-laptop-code" aria-hidden="true"></i>
-                </div>
-                <div class="logo-text">
-                    <h1>જય અંબે ઓનલાઇન સેટર</h1>
-                    <div class="english">Jai Ambe Online Center</div>
-                </div>
-            </a>
-            
-            <nav aria-label="Main navigation">
-                <ul class="nav-links" id="navLinks">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#daily">Daily Services</a></li>
-                    <li><a href="#testimonials">Reviews</a></li>
-                    <li><a href="#blog">Blog</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-            
-            <button class="mobile-menu" id="mobileMenu" aria-label="Toggle menu" aria-expanded="false">
-                <i class="fas fa-bars" aria-hidden="true"></i>
+<div class="cursor-glow" id="cursorGlow"></div>
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- Toast -->
+<div class="toast" id="toast">
+    <i class="fas fa-check-circle"></i>
+    <span id="toastMessage">Success!</span>
+</div>
+
+<!-- Header -->
+<header id="header">
+    <div class="header-container">
+        <a href="#home" class="logo">
+            <div class="logo-icon"><i class="fas fa-laptop-code"></i></div>
+            <div class="logo-text">
+                <h1>જય અંબે ઓનલાઇન સેટર</h1>
+                <p>Jai Ambe Online Center</p>
+            </div>
+        </a>
+        <nav>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#daily">Daily Deals</a></li>
+                <li><a href="#testimonials">Reviews</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="header-actions">
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <i class="fas fa-sun"></i>
+            </button>
+            <a href="#contact" class="btn-cta"><i class="fas fa-calendar-check"></i> Book Now</a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+                <i class="fas fa-bars"></i>
             </button>
         </div>
-    </header>
+    </div>
+</header>
 
-    <main id="main-content">
-
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-container">
-            <div class="hero-left">
-                <span class="hero-badge">✨ સ્વાગત છે | Welcome to JAOC</span>
-                <h1>
-                    Professional Computer <br>Solutions
-                    <span class="gujarati-hero">પ્રોફેશનલ કમ્પ્યુટર સોલ્યુશન્સ</span>
-                </h1>
-                <p>જય અંબે ઓનલાઇન સેટર - Your trusted partner for computer sales, repair, and maintenance services with 12+ years of expertise in Valsad.</p>
-                <div class="hero-buttons">
-                    <a href="#services" class="btn-primary"><i class="fas fa-rocket" aria-hidden="true"></i> Explore Services</a>
-                    <a href="#contact" class="btn-secondary"><i class="fas fa-headset" aria-hidden="true"></i> Contact Us</a>
-                </div>
-                <div class="stats-mini">
-                    <div class="stat-mini">
-                        <h3>12+</h3>
-                        <p>Years</p>
-                    </div>
-                    <div class="stat-mini">
-                        <h3>5K+</h3>
-                        <p>Clients</p>
-                    </div>
-                    <div class="stat-mini">
-                        <h3>8.5K+</h3>
-                        <p>Devices</p>
-                    </div>
-                    <div class="stat-mini">
-                        <h3>24/7</h3>
-                        <p>Support</p>
-                    </div>
-                </div>
+<!-- Hero -->
+<section class="hero" id="home">
+    <div class="hero-container">
+        <div class="hero-left">
+            <div class="hero-badge">
+                <span class="dot"></span>
+                Trusted by 5000+ Customers in Valsad
             </div>
-            <div class="hero-image" aria-hidden="true">
-                <i class="fas fa-laptop-code"></i>
+            <h1>
+                Premium <span class="gradient-text">Computer</span><br>
+                Solutions in Valsad
+                <span class="gujarati-line">પ્રોફેશનલ કમ્પ્યુટર સેવાઓ</span>
+            </h1>
+            <p>જય અંબે ઓનલાઇન સેટર - Your trusted partner for computer repair, data recovery, and IT services since 2010. Fast, reliable, and affordable.</p>
+            <div class="hero-buttons">
+                <a href="#services" class="btn-primary"><i class="fas fa-rocket"></i> Explore Services</a>
+                <a href="#contact" class="btn-secondary"><i class="fas fa-headset"></i> Get Free Quote</a>
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat"><h3>12+</h3><p>Years Experience</p></div>
+                <div class="hero-stat"><h3>5000+</h3><p>Happy Clients</p></div>
+                <div class="hero-stat"><h3>8500+</h3><p>Devices Fixed</p></div>
+                <div class="hero-stat"><h3>4.9★</h3><p>Customer Rating</p></div>
             </div>
         </div>
-    </section>
-
-    <!-- Services Section -->
-    <section class="services-section" id="services">
-        <div class="section-header">
-            <h2>Our Premium Services</h2>
-            <p>અમારી સેવાઓ | Comprehensive computer solutions tailored to your needs</p>
-        </div>
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-diagnoses" aria-hidden="true"></i>
-                </div>
-                <h3>Diagnostic & Repair</h3>
-                <p>Complete diagnosis and repair for all computer issues including hardware and software problems.</p>
-                <div class="service-price">From ₹999</div>
-                <a href="#contact" class="service-link">Book Now →</a>
+        <div class="hero-visual">
+            <div class="floating-card card-1">
+                <div class="card-icon"><i class="fas fa-shield-alt"></i></div>
+                <h4>Virus Removal</h4>
+                <p>Complete system cleanup & protection</p>
+                <span class="card-badge">Only ₹499</span>
             </div>
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-database" aria-hidden="true"></i>
-                </div>
-                <h3>Data Recovery</h3>
-                <p>Professional data recovery services for accidentally deleted or corrupted files.</p>
-                <div class="service-price">From ₹1499</div>
-                <a href="#contact" class="service-link">Recover Data →</a>
+            <div class="floating-card card-2">
+                <div class="card-icon secondary"><i class="fas fa-database"></i></div>
+                <h4>Data Recovery</h4>
+                <p>95% success rate</p>
+                <span class="card-badge">From ₹1499</span>
             </div>
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-network-wired" aria-hidden="true"></i>
-                </div>
-                <h3>Networking Solutions</h3>
-                <p>Complete networking setup including WiFi installation and router configuration.</p>
-                <div class="service-price">From ₹799</div>
-                <a href="#contact" class="service-link">Setup Network →</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Daily Services -->
-    <section class="daily-section" id="daily">
-        <div class="section-header">
-            <h2>Daily Special Services</h2>
-            <p>રોજની ખાસ સેવાઓ | Exclusive offers for every day of the week</p>
-        </div>
-        <div class="daily-grid">
-            <div class="daily-card">
-                <i class="fas fa-print" aria-hidden="true"></i>
-                <h3>Monday</h3>
-                <p>Printing & Xerox Day</p>
-                <div class="daily-price">B&W: ₹2 | Color: ₹10</div>
-            </div>
-            <div class="daily-card">
-                <i class="fas fa-microchip" aria-hidden="true"></i>
-                <h3>Tuesday</h3>
-                <p>Hardware Installation</p>
-                <div class="daily-price">RAM: ₹199 | SSD: ₹299</div>
-            </div>
-            <div class="daily-card">
-                <i class="fas fa-shield-virus" aria-hidden="true"></i>
-                <h3>Wednesday</h3>
-                <p>Antivirus & Security</p>
-                <div class="daily-price">Virus Removal: ₹399</div>
-            </div>
-            <div class="daily-card">
-                <i class="fas fa-wifi" aria-hidden="true"></i>
-                <h3>Thursday</h3>
-                <p>Networking Day</p>
-                <div class="daily-price">WiFi Setup: ₹499</div>
-            </div>
-            <div class="daily-card">
-                <i class="fas fa-tools" aria-hidden="true"></i>
-                <h3>Friday</h3>
-                <p>Repair & Maintenance</p>
-                <div class="daily-price">Diagnostic: ₹299</div>
-            </div>
-            <div class="daily-card">
-                <i class="fas fa-laptop" aria-hidden="true"></i>
-                <h3>Saturday</h3>
-                <p>Laptop Special Day</p>
-                <div class="daily-price">Battery: ₹1499</div>
-            </div>
-            <div class="daily-card">
-                <i class="fas fa-home" aria-hidden="true"></i>
-                <h3>Sunday</h3>
-                <p>Home Service Day</p>
-                <div class="daily-price">FREE Pickup/Delivery</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Location Section -->
-    <section class="location-section">
-        <div class="location-card">
-            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-            <h3>અમારું સ્થાન | Our Location</h3>
-            <div class="gujarati-address">જય અંબે ઓનલાઇન સેટર</div>
-            <p>Jai Ambe Online Center</p>
-            <p><strong>Shop No. 05, T.M. Park, Mukund Parnera, Valsad - 396020, Gujarat, India</strong></p>
-            <p style="margin-top: 10px;">
-                <i class="fas fa-phone" aria-hidden="true"></i> <a href="tel:+918141515020">+91 8141515020</a> | 
-                <i class="fas fa-envelope" aria-hidden="true"></i> <a href="mailto:bhavishyaenterprisevalsad@gmail.com">bhavishyaenterprisevalsad@gmail.com</a>
-            </p>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="testimonials-section" id="testimonials">
-        <div class="section-header">
-            <h2>Customer Stories</h2>
-            <p>ગ્રાહકોના અનુભવો | What our clients say about us</p>
-        </div>
-        <div class="testimonials-grid">
-            <div class="testimonial-card">
-                <div class="testimonial-text">"Exceptional service! JAOC recovered my critical business data within hours. Highly professional team!"</div>
-                <div class="testimonial-author">
-                    <div class="author-avatar">RK</div>
-                    <div>
-                        <h4>Rahul Kumar</h4>
-                        <p>Business Owner</p>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-card">
-                <div class="testimonial-text">"Best computer service in Valsad. Reasonable prices and quick turnaround. My go-to for all tech needs!"</div>
-                <div class="testimonial-author">
-                    <div class="author-avatar">PS</div>
-                    <div>
-                        <h4>Priya Sharma</h4>
-                        <p>Teacher</p>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-card">
-                <div class="testimonial-text">"Fixed my laptop before exams. Saved my semester! Great support and friendly staff. Highly recommended!"</div>
-                <div class="testimonial-author">
-                    <div class="author-avatar">AM</div>
-                    <div>
-                        <h4>Anil Mehta</h4>
-                        <p>Student</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Blog Section -->
-    <section class="blog-section" id="blog">
-        <div class="section-header">
-            <h2>Tech Tips & Updates</h2>
-            <p>Latest insights from our experts</p>
-        </div>
-        <div class="blog-grid">
-            <div class="blog-card">
-                <div class="blog-img">
-                    <i class="fas fa-shield-alt" aria-hidden="true"></i>
-                </div>
-                <div class="blog-content">
-                    <div class="blog-meta">
-                        <span><i class="far fa-calendar" aria-hidden="true"></i> Dec 15, 2023</span>
-                        <span><i class="far fa-clock" aria-hidden="true"></i> 5 min read</span>
-                    </div>
-                    <h3>10 Cybersecurity Tips for 2024</h3>
-                    <p>Protect your digital life with these essential security practices...</p>
-                    <a href="#contact" class="blog-link">Ask About This →</a>
-                </div>
-            </div>
-            <div class="blog-card">
-                <div class="blog-img">
-                    <i class="fas fa-tachometer-alt" aria-hidden="true"></i>
-                </div>
-                <div class="blog-content">
-                    <div class="blog-meta">
-                        <span><i class="far fa-calendar" aria-hidden="true"></i> Dec 10, 2023</span>
-                        <span><i class="far fa-clock" aria-hidden="true"></i> 7 min read</span>
-                    </div>
-                    <h3>Speed Up Your PC: Ultimate Guide</h3>
-                    <p>Proven methods to boost your computer's performance...</p>
-                    <a href="#contact" class="blog-link">Ask About This →</a>
-                </div>
-            </div>
-            <div class="blog-card">
-                <div class="blog-img">
-                    <i class="fas fa-cloud-upload-alt" aria-hidden="true"></i>
-                </div>
-                <div class="blog-content">
-                    <div class="blog-meta">
-                        <span><i class="far fa-calendar" aria-hidden="true"></i> Dec 5, 2023</span>
-                        <span><i class="far fa-clock" aria-hidden="true"></i> 4 min read</span>
-                    </div>
-                    <h3>Cloud Backup: Why You Need It</h3>
-                    <p>Never lose your important data again with cloud solutions...</p>
-                    <a href="#contact" class="blog-link">Ask About This →</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact-section" id="contact">
-        <div class="contact-container">
-            <div class="contact-info">
-                <h3>સંપર્ક કરો | Let's Talk</h3>
-                <p>Have a project or need support? We're here to help!</p>
-                <div class="info-item">
-                    <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-                    <div>
-                        <h4>Visit Us</h4>
-                        <p>Shop No. 05, T.M. Park, Mukund Parnera, Valsad - 396020</p>
-                    </div>
-                </div>
-                <div class="info-item">
-                    <i class="fas fa-phone" aria-hidden="true"></i>
-                    <div>
-                        <h4>Call Us</h4>
-                        <a href="tel:+918141515020">+91 8141515020</a>
-                    </div>
-                </div>
-                <div class="info-item">
-                    <i class="fas fa-envelope" aria-hidden="true"></i>
-                    <div>
-                        <h4>Email</h4>
-                        <a href="mailto:bhavishyaenterprisevalsad@gmail.com">bhavishyaenterprisevalsad@gmail.com</a>
-                    </div>
-                </div>
-            </div>
-            <div class="contact-form">
-                <form id="contactForm" novalidate>
-                    <div class="form-group">
-                        <input type="text" name="name" id="nameInput" placeholder="Your Name / તમારું નામ" required aria-required="true">
-                        <div class="form-error" id="nameError">Please enter a valid name (min 3 characters)</div>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" name="email" id="emailInput" placeholder="Your Email / ઈમેલ" required aria-required="true">
-                        <div class="form-error" id="emailError">Please enter a valid email address</div>
-                    </div>
-                    <div class="form-group">
-                        <input type="tel" name="phone" id="phoneInput" placeholder="Phone Number / મોબાઈલ (10 digits)" required aria-required="true" maxlength="10">
-                        <div class="form-error" id="phoneError">Please enter valid 10-digit mobile number</div>
-                    </div>
-                    <div class="form-group">
-                        <select name="service" id="serviceInput" required aria-required="true">
-                            <option value="">Select Service / સેવા પસંદ કરો</option>
-                            <option value="repair">Computer Repair / કમ્પ્યુટર રીપેર</option>
-                            <option value="data-recovery">Data Recovery / ડેટા રિકવરી</option>
-                            <option value="networking">Networking / નેટવર્કિંગ</option>
-                            <option value="printing">Printing Services / પ્રિન્ટિંગ</option>
-                            <option value="other">Other / અન્ય</option>
-                        </select>
-                        <div class="form-error" id="serviceError">Please select a service</div>
-                    </div>
-                    <div class="form-group">
-                        <textarea name="message" id="messageInput" rows="3" placeholder="Your Message / સંદેશ" required aria-required="true"></textarea>
-                        <div class="form-error" id="messageError">Please enter your message (min 10 characters)</div>
-                    </div>
-                    <button type="submit" class="submit-btn" id="submitBtn">Send Message →</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    </main>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h4>જય અંબે ઓનલાઇન સેટર</h4>
-                <p>Jai Ambe Online Center - Your trusted computer solutions partner in Valsad since 2010.</p>
-                <div class="social-icons">
-                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
-                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
-                </div>
-            </div>
-            <div class="footer-col">
-                <h4>Quick Links</h4>
-                <ul class="footer-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#daily">Daily Specials</a></li>
-                    <li><a href="#testimonials">Testimonials</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Services</h4>
-                <ul class="footer-links">
-                    <li><a href="#services">Computer Repair</a></li>
-                    <li><a href="#services">Data Recovery</a></li>
-                    <li><a href="#services">Network Setup</a></li>
-                    <li><a href="#services">Printing Services</a></li>
-                    <li><a href="#services">Custom PC Build</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Business Hours</h4>
-                <p>Mon-Fri: 9:00 AM - 8:00 PM</p>
-                <p>Saturday: 10:00 AM - 6:00 PM</p>
-                <p>Sunday: 10:00 AM - 2:00 PM</p>
-            </div>
-        </div>
-        <div class="copyright">
-            <p>&copy; <span id="currentYear"></span> જય અંબે ઓનલાઇન સેટર - Jai Ambe Online Center. All rights reserved. | Shop No. 05, T.M. Park, Mukund Parnera, Valsad 396020</p>
-        </div>
-    </footer>
-
-    <!-- Back to Top -->
-    <button class="back-to-top" id="backToTop" aria-label="Back to top">
-        <i class="fas fa-arrow-up" aria-hidden="true"></i>
-    </button>
-
-    <!-- Chatbot -->
-    <div class="chatbot">
-        <button class="chat-toggle" id="chatToggle" aria-label="Open chat">
-            <i class="fas fa-comment-dots" aria-hidden="true"></i>
-        </button>
-        <div class="chat-window" id="chatWindow" role="dialog" aria-label="Chat with JAOC Assistant">
-            <div class="chat-header">
-                <h4>JAOC Assistant</h4>
-                <button class="close-chat-btn" id="closeChat" aria-label="Close chat">
-                    <i class="fas fa-times" aria-hidden="true"></i>
-                </button>
-            </div>
-            <div class="chat-messages" id="chatMessages">
-                <div class="message bot-message">Hello! 👋 How can I help you today? / આપ શું મદદ કરી શકો?</div>
-            </div>
-            <div class="chat-input">
-                <input type="text" id="chatInput" placeholder="Type your message..." maxlength="500" aria-label="Chat message input">
-                <button id="chatSendBtn" aria-label="Send message">
-                    <i class="fas fa-paper-plane" aria-hidden="true"></i>
-                </button>
+            <div class="floating-card card-3">
+                <div class="card-icon gold"><i class="fas fa-bolt"></i></div>
+                <h4>Same Day Service</h4>
+                <p>Most repairs done in 4 hours</p>
+                <span class="card-badge">Available</span>
             </div>
         </div>
     </div>
+</section>
 
-    <script>
-        'use strict';
+<!-- Marquee -->
+<div class="marquee-strip">
+    <div class="marquee-track" id="marqueeTrack">
+        <span class="marquee-item"><i class="fas fa-star"></i> Expert Technicians</span>
+        <span class="marquee-item"><i class="fas fa-star"></i> 100% Genuine Parts</span>
+        <span class="marquee-item"><i class="fas fa-star"></i> Free Diagnosis</span>
+        <span class="marquee-item"><i class="fas fa-star"></i> Same Day Service</span>
+        <span class="marquee-item"><i class="fas fa-star"></i> 3-Month Warranty</span>
+        <span class="marquee-item"><i class="fas fa-star"></i> Home Pickup Available</span>
+        <span class="marquee-item"><i class="fas fa-star"></i> Expert Technicians</span>
+        <span class="marquee-item"><i class="fas fa-star"></i> 100% Genuine Parts</span>
+        <span class="marquee-item"><i class="fas fa-star"></i> Free Diagnosis</span>
+        <span class="marquee-item"><i class="fas fa-star"></i> Same Day Service</span>
+        <span class="marquee-item"><i class="fas fa-star"></i> 3-Month Warranty</span>
+        <span class="marquee-item"><i class="fas fa-star"></i> Home Pickup Available</span>
+    </div>
+</div>
 
-        // ============ UTILITY ============
-        const $ = (sel) => document.querySelector(sel);
-        const $$ = (sel) => document.querySelectorAll(sel);
+<!-- Services -->
+<section class="services-section" id="services">
+    <div class="section-header">
+        <div class="section-tag"><i class="fas fa-tools"></i> Our Services</div>
+        <h2>Everything You Need <br>Under One Roof</h2>
+        <p>Professional computer services backed by 12+ years of experience and thousands of happy customers.</p>
+    </div>
+    <div class="services-grid">
+        <div class="service-card">
+            <div class="service-icon"><i class="fas fa-laptop-medical"></i></div>
+            <h3>Computer & Laptop Repair</h3>
+            <p>Complete hardware & software repair for all brands with genuine parts.</p>
+            <ul class="service-features">
+                <li><i class="fas fa-check"></i> Motherboard Repair</li>
+                <li><i class="fas fa-check"></i> Screen Replacement</li>
+                <li><i class="fas fa-check"></i> Battery & Charging Issues</li>
+                <li><i class="fas fa-check"></i> OS Installation & Recovery</li>
+            </ul>
+            <div class="service-footer">
+                <div class="service-price">₹999<small>onwards</small></div>
+                <a href="#contact" class="service-book">Book →</a>
+            </div>
+        </div>
+        <div class="service-card">
+            <div class="service-icon"><i class="fas fa-database"></i></div>
+            <h3>Data Recovery Service</h3>
+            <p>Recover lost, deleted, or corrupted data with 95% success rate.</p>
+            <ul class="service-features">
+                <li><i class="fas fa-check"></i> Hard Drive Recovery</li>
+                <li><i class="fas fa-check"></i> SSD & USB Recovery</li>
+                <li><i class="fas fa-check"></i> Deleted File Restore</li>
+                <li><i class="fas fa-check"></i> Formatted Drive Recovery</li>
+            </ul>
+            <div class="service-footer">
+                <div class="service-price">₹1499<small>onwards</small></div>
+                <a href="#contact" class="service-book">Book →</a>
+            </div>
+        </div>
+        <div class="service-card">
+            <div class="service-icon"><i class="fas fa-shield-virus"></i></div>
+            <h3>Antivirus & Security</h3>
+            <p>Complete virus removal and system security with premium antivirus.</p>
+            <ul class="service-features">
+                <li><i class="fas fa-check"></i> Virus & Malware Removal</li>
+                <li><i class="fas fa-check"></i> Ransomware Cleanup</li>
+                <li><i class="fas fa-check"></i> Antivirus Installation</li>
+                <li><i class="fas fa-check"></i> System Optimization</li>
+            </ul>
+            <div class="service-footer">
+                <div class="service-price">₹499<small>onwards</small></div>
+                <a href="#contact" class="service-book">Book →</a>
+            </div>
+        </div>
+        <div class="service-card">
+            <div class="service-icon"><i class="fas fa-network-wired"></i></div>
+            <h3>Networking Solutions</h3>
+            <p>Complete home & office networking setup with optimization.</p>
+            <ul class="service-features">
+                <li><i class="fas fa-check"></i> WiFi Installation</li>
+                <li><i class="fas fa-check"></i> Router Configuration</li>
+                <li><i class="fas fa-check"></i> Network Security</li>
+                <li><i class="fas fa-check"></i> LAN Setup</li>
+            </ul>
+            <div class="service-footer">
+                <div class="service-price">₹799<small>onwards</small></div>
+                <a href="#contact" class="service-book">Book →</a>
+            </div>
+        </div>
+        <div class="service-card">
+            <div class="service-icon"><i class="fas fa-print"></i></div>
+            <h3>Printing & Xerox</h3>
+            <p>High-quality printing, photocopy, lamination & binding services.</p>
+            <ul class="service-features">
+                <li><i class="fas fa-check"></i> B&W Printing</li>
+                <li><i class="fas fa-check"></i> Color Printing</li>
+                <li><i class="fas fa-check"></i> Photo Printing</li>
+                <li><i class="fas fa-check"></i> Scanning & Email</li>
+            </ul>
+            <div class="service-footer">
+                <div class="service-price">₹2<small>/page</small></div>
+                <a href="#contact" class="service-book">Book →</a>
+            </div>
+        </div>
+        <div class="service-card">
+            <div class="service-icon"><i class="fas fa-desktop"></i></div>
+            <h3>Custom PC Build</h3>
+            <p>Build your dream PC for gaming, design, or professional work.</p>
+            <ul class="service-features">
+                <li><i class="fas fa-check"></i> Gaming PCs</li>
+                <li><i class="fas fa-check"></i> Workstations</li>
+                <li><i class="fas fa-check"></i> Office PCs</li>
+                <li><i class="fas fa-check"></i> Free Assembly</li>
+            </ul>
+            <div class="service-footer">
+                <div class="service-price">₹25000<small>onwards</small></div>
+                <a href="#contact" class="service-book">Build →</a>
+            </div>
+        </div>
+    </div>
+</section>
 
-        // Dynamic copyright year
-        document.addEventListener('DOMContentLoaded', () => {
-            $('#currentYear').textContent = new Date().getFullYear();
-        });
+<!-- Daily Deals -->
+<section class="daily-section" id="daily">
+    <div class="section-header">
+        <div class="section-tag"><i class="fas fa-calendar-week"></i> Daily Deals</div>
+        <h2>Special Offer Every Day</h2>
+        <p>રોજની ખાસ સેવાઓ - Save more with our exclusive daily deals!</p>
+    </div>
+    <div class="daily-grid">
+        <div class="daily-card">
+            <span class="daily-day">Monday</span>
+            <div class="daily-icon"><i class="fas fa-print"></i></div>
+            <h3>Printing Day</h3>
+            <p>B&W & Color printing special rates</p>
+            <div class="daily-price">B&W ₹2 | Color ₹10</div>
+        </div>
+        <div class="daily-card">
+            <span class="daily-day">Tuesday</span>
+            <div class="daily-icon"><i class="fas fa-microchip"></i></div>
+            <h3>Hardware Day</h3>
+            <p>RAM, SSD & CPU installation offers</p>
+            <div class="daily-price">RAM ₹199 | SSD ₹299</div>
+        </div>
+        <div class="daily-card">
+            <span class="daily-day">Wednesday</span>
+            <div class="daily-icon"><i class="fas fa-shield-virus"></i></div>
+            <h3>Security Day</h3>
+            <p>Virus removal & antivirus installation</p>
+            <div class="daily-price">Virus Removal ₹399</div>
+        </div>
+        <div class="daily-card">
+            <span class="daily-day">Thursday</span>
+            <div class="daily-icon"><i class="fas fa-wifi"></i></div>
+            <h3>Network Day</h3>
+            <p>WiFi setup & router configuration</p>
+            <div class="daily-price">WiFi Setup ₹499</div>
+        </div>
+        <div class="daily-card">
+            <span class="daily-day">Friday</span>
+            <div class="daily-icon"><i class="fas fa-tools"></i></div>
+            <h3>Repair Day</h3>
+            <p>Free diagnostic with any repair</p>
+            <div class="daily-price">Diagnostic ₹299</div>
+        </div>
+        <div class="daily-card">
+            <span class="daily-day">Saturday</span>
+            <div class="daily-icon"><i class="fas fa-laptop"></i></div>
+            <h3>Laptop Day</h3>
+            <p>Battery, keyboard & screen special</p>
+            <div class="daily-price">Battery ₹1499</div>
+        </div>
+        <div class="daily-card">
+            <span class="daily-day">Sunday</span>
+            <div class="daily-icon"><i class="fas fa-home"></i></div>
+            <h3>Home Service</h3>
+            <p>Doorstep service & pickup available</p>
+            <div class="daily-price">FREE Pickup</div>
+        </div>
+    </div>
+</section>
 
-        // ============ HEADER SCROLL EFFECT ============
-        const header = $('header');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('header-scrolled');
-            } else {
-                header.classList.remove('header-scrolled');
+<!-- Testimonials -->
+<section class="testimonials-section" id="testimonials">
+    <div class="section-header">
+        <div class="section-tag"><i class="fas fa-star"></i> Reviews</div>
+        <h2>What Our Customers Say</h2>
+        <p>ગ્રાહકોના અનુભવો - Real feedback from real customers</p>
+    </div>
+    <div class="testimonials-grid">
+        <div class="testimonial-card">
+            <div class="testimonial-quote">"</div>
+            <div class="testimonial-stars">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <p class="testimonial-text">"JAOC saved my business! My server crashed with all client data, and they recovered everything within 24 hours. Truly professional and reliable."</p>
+            <div class="testimonial-author">
+                <div class="author-avatar">RK</div>
+                <div class="author-info">
+                    <h4>Rahul Kumar</h4>
+                    <p>Business Owner</p>
+                </div>
+            </div>
+        </div>
+        <div class="testimonial-card">
+            <div class="testimonial-quote">"</div>
+            <div class="testimonial-stars">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <p class="testimonial-text">"Best computer service in Valsad! Reasonable prices, quick turnaround, and friendly staff. Been using them for 5 years for all my printing needs."</p>
+            <div class="testimonial-author">
+                <div class="author-avatar">PS</div>
+                <div class="author-info">
+                    <h4>Priya Sharma</h4>
+                    <p>Teacher</p>
+                </div>
+            </div>
+        </div>
+        <div class="testimonial-card">
+            <div class="testimonial-quote">"</div>
+            <div class="testimonial-stars">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <p class="testimonial-text">"My laptop stopped working before final exams. JAOC fixed it overnight and even gave a student discount. They're absolute lifesavers!"</p>
+            <div class="testimonial-author">
+                <div class="author-avatar">AM</div>
+                <div class="author-info">
+                    <h4>Anil Mehta</h4>
+                    <p>Student</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Blog -->
+<section class="blog-section" id="blog">
+    <div class="section-header">
+        <div class="section-tag"><i class="fas fa-lightbulb"></i> Tech Tips</div>
+        <h2>Latest Insights & Tips</h2>
+        <p>Expert advice to keep your devices running smoothly</p>
+    </div>
+    <div class="blog-grid">
+        <div class="blog-card">
+            <div class="blog-thumb theme-1"><i class="fas fa-shield-alt"></i></div>
+            <div class="blog-content">
+                <div class="blog-meta">
+                    <span><i class="far fa-calendar"></i> Jan 15, 2026</span>
+                    <span><i class="far fa-clock"></i> 5 min</span>
+                </div>
+                <h3>10 Essential Cybersecurity Tips for 2026</h3>
+                <p>Protect your digital life with these proven security practices that actually work.</p>
+                <a href="#contact" class="blog-read">Learn More <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+        <div class="blog-card">
+            <div class="blog-thumb theme-2"><i class="fas fa-tachometer-alt"></i></div>
+            <div class="blog-content">
+                <div class="blog-meta">
+                    <span><i class="far fa-calendar"></i> Jan 10, 2026</span>
+                    <span><i class="far fa-clock"></i> 7 min</span>
+                </div>
+                <h3>Speed Up Your Slow PC: Complete Guide</h3>
+                <p>Proven methods to boost performance - from simple tweaks to hardware upgrades.</p>
+                <a href="#contact" class="blog-read">Learn More <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+        <div class="blog-card">
+            <div class="blog-thumb theme-3"><i class="fas fa-cloud-upload-alt"></i></div>
+            <div class="blog-content">
+                <div class="blog-meta">
+                    <span><i class="far fa-calendar"></i> Jan 5, 2026</span>
+                    <span><i class="far fa-clock"></i> 4 min</span>
+                </div>
+                <h3>Why Cloud Backup is Essential Today</h3>
+                <p>Never lose important data again with modern cloud backup solutions.</p>
+                <a href="#contact" class="blog-read">Learn More <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact -->
+<section class="contact-section" id="contact">
+    <div class="section-header">
+        <div class="section-tag"><i class="fas fa-envelope"></i> Contact Us</div>
+        <h2>Let's Get Started</h2>
+        <p>સંપર્ક કરો - Send us a message and we'll reply within 30 minutes!</p>
+    </div>
+    <div class="contact-container">
+        <div class="contact-info">
+            <h3>Get In Touch</h3>
+            <p>Have a question or need a service? Our team is ready to help!</p>
+            
+            <div class="contact-item">
+                <div class="contact-item-icon"><i class="fas fa-map-marker-alt"></i></div>
+                <div>
+                    <h4>Visit Us</h4>
+                    <p>Shop No. 05, T.M. Park, Mukund Parnera,<br>Valsad - 396020, Gujarat</p>
+                </div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-item-icon"><i class="fas fa-phone"></i></div>
+                <div>
+                    <h4>Call Us</h4>
+                    <a href="tel:+918141515020">+91 81415 15020</a>
+                </div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-item-icon"><i class="fas fa-envelope"></i></div>
+                <div>
+                    <h4>Email Us</h4>
+                    <a href="mailto:bhavishyaenterprisevalsad@gmail.com">bhavishyaenterprisevalsad@gmail.com</a>
+                </div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-item-icon"><i class="fas fa-clock"></i></div>
+                <div>
+                    <h4>Working Hours</h4>
+                    <p>Mon-Fri: 9 AM - 8 PM<br>Sat: 10 AM - 6 PM | Sun: 10 AM - 2 PM</p>
+                </div>
+            </div>
+            
+            <div class="contact-socials">
+                <a href="#" class="social-btn" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-btn" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="#" class="social-btn" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+        
+        <div class="contact-form">
+            <h3>Send a Message</h3>
+            <p>Fill the form below and we'll get back to you quickly.</p>
+            
+            <!-- Setup Notice - shows until EmailJS configured -->
+            <div class="setup-notice" id="setupNotice">
+                <strong>⚠️ Setup Required:</strong>
+                To receive messages, set up a free EmailJS account (instructions below the code). Currently, form submissions open WhatsApp as fallback.
+            </div>
+            
+            <form id="contactForm" novalidate>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Full Name <span class="req">*</span></label>
+                        <input type="text" id="nameInput" name="name" placeholder="Your name" required>
+                        <div class="form-error" id="nameErr">Please enter your name (min 3 chars)</div>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone <span class="req">*</span></label>
+                        <input type="tel" id="phoneInput" name="phone" placeholder="10-digit number" required maxlength="10">
+                        <div class="form-error" id="phoneErr">Enter valid 10-digit mobile</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Email Address <span class="req">*</span></label>
+                    <input type="email" id="emailInput" name="email" placeholder="you@example.com" required>
+                    <div class="form-error" id="emailErr">Enter valid email</div>
+                </div>
+                <div class="form-group">
+                    <label>Service Needed <span class="req">*</span></label>
+                    <select id="serviceInput" name="service" required>
+                        <option value="">Select a service</option>
+                        <option value="Computer Repair">Computer / Laptop Repair</option>
+                        <option value="Data Recovery">Data Recovery</option>
+                        <option value="Virus Removal">Virus / Antivirus</option>
+                        <option value="Networking">Networking / WiFi</option>
+                        <option value="Printing">Printing / Xerox</option>
+                        <option value="Custom PC">Custom PC Build</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <div class="form-error" id="serviceErr">Please select a service</div>
+                </div>
+                <div class="form-group">
+                    <label>Message <span class="req">*</span></label>
+                    <textarea id="messageInput" name="message" placeholder="Describe your issue or requirement..." required></textarea>
+                    <div class="form-error" id="messageErr">Please write a message (min 10 chars)</div>
+                </div>
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <i class="fas fa-paper-plane"></i>
+                    <span>Send Message</span>
+                </button>
+                <div class="form-status" id="formStatus"></div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-grid">
+        <div class="footer-col">
+            <div class="logo" style="margin-bottom: 16px;">
+                <div class="logo-icon" style="width: 42px; height: 42px;">
+                    <i class="fas fa-laptop-code" style="font-size: 1.3rem;"></i>
+                </div>
+                <div class="logo-text">
+                    <h1 style="font-size: 1rem;">જય અંબે ઓનલાઇન સેટર</h1>
+                    <p style="font-size: 0.7rem;">Jai Ambe Online Center</p>
+                </div>
+            </div>
+            <p>Your trusted computer solutions partner in Valsad since 2010. Quality service, genuine parts, honest pricing.</p>
+            <div style="display: flex; gap: 8px; margin-top: 16px;">
+                <a href="#" class="social-btn" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-btn" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+        <div class="footer-col">
+            <h4>Quick Links</h4>
+            <ul class="footer-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#daily">Daily Deals</a></li>
+                <li><a href="#testimonials">Reviews</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Our Services</h4>
+            <ul class="footer-links">
+                <li><a href="#services">Computer Repair</a></li>
+                <li><a href="#services">Data Recovery</a></li>
+                <li><a href="#services">Virus Removal</a></li>
+                <li><a href="#services">Networking</a></li>
+                <li><a href="#services">Printing</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Contact Info</h4>
+            <p><i class="fas fa-map-marker-alt" style="color: var(--primary); margin-right: 8px;"></i>Shop No. 05, T.M. Park, Valsad - 396020</p>
+            <p><i class="fas fa-phone" style="color: var(--primary); margin-right: 8px;"></i><a href="tel:+918141515020" style="color: var(--text-secondary); text-decoration: none;">+91 81415 15020</a></p>
+            <p><i class="fas fa-envelope" style="color: var(--primary); margin-right: 8px;"></i><a href="mailto:bhavishyaenterprisevalsad@gmail.com" style="color: var(--text-secondary); text-decoration: none;">bhavishyaenterprisevalsad@gmail.com</a></p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© <span id="currentYear"></span> જય અંબે ઓનલાઇન સેટર - Jai Ambe Online Center. All rights reserved.</p>
+        <span class="footer-badge"><i class="fas fa-check-circle"></i> Trusted Since 2010</span>
+    </div>
+</footer>
+
+<!-- Floating Actions -->
+<div class="floating-actions">
+    <a href="https://wa.me/918141515020?text=Hi%20JAOC%2C%20I%20need%20help%20with%20my%20computer" target="_blank" class="float-btn whatsapp-btn" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    <button class="float-btn chatbot-btn" id="chatOpenBtn" aria-label="Open chat">
+        <i class="fas fa-comment-dots"></i>
+    </button>
+</div>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="fas fa-arrow-up"></i>
+</button>
+
+<!-- Chatbot -->
+<div class="chat-window" id="chatWindow">
+    <div class="chat-header">
+        <div class="chat-header-info">
+            <div class="chat-avatar"><i class="fas fa-robot"></i></div>
+            <div>
+                <h4>JAOC Assistant</h4>
+                <div class="chat-status"><span class="dot"></span>Online now</div>
+            </div>
+        </div>
+        <button class="chat-close" id="chatCloseBtn" aria-label="Close chat">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+    <div class="chat-body" id="chatBody">
+        <div class="chat-msg bot">
+            Hello! 👋 Welcome to JAOC. I'm here to help with:
+            <div class="chat-quick">
+                <button class="quick-btn" data-q="services">Services</button>
+                <button class="quick-btn" data-q="pricing">Pricing</button>
+                <button class="quick-btn" data-q="hours">Hours</button>
+                <button class="quick-btn" data-q="location">Location</button>
+            </div>
+        </div>
+    </div>
+    <div class="chat-input-wrap">
+        <input type="text" id="chatInput" placeholder="Type your message..." maxlength="300" aria-label="Message">
+        <button class="chat-send" id="chatSendBtn" aria-label="Send">
+            <i class="fas fa-paper-plane"></i>
+        </button>
+    </div>
+</div>
+
+<script>
+'use strict';
+
+// ====== CONFIG ======
+const CONFIG = {
+    // EmailJS Config - FOLLOW SETUP BELOW
+    EMAILJS_PUBLIC_KEY: 'YOUR_PUBLIC_KEY_HERE',       // Replace this
+    EMAILJS_SERVICE_ID: 'YOUR_SERVICE_ID_HERE',       // Replace this
+    EMAILJS_TEMPLATE_ID: 'YOUR_TEMPLATE_ID_HERE',     // Replace this
+    // Fallback WhatsApp (works without setup)
+    WHATSAPP_NUMBER: '918141515020'
+};
+
+const $ = (s) => document.querySelector(s);
+const $$ = (s) => document.querySelectorAll(s);
+
+// ====== INIT ======
+document.addEventListener('DOMContentLoaded', () => {
+    $('#currentYear').textContent = new Date().getFullYear();
+    
+    // Check if EmailJS is configured
+    const isConfigured = 
+        CONFIG.EMAILJS_PUBLIC_KEY !== 'YOUR_PUBLIC_KEY_HERE' &&
+        CONFIG.EMAILJS_SERVICE_ID !== 'YOUR_SERVICE_ID_HERE' &&
+        CONFIG.EMAILJS_TEMPLATE_ID !== 'YOUR_TEMPLATE_ID_HERE';
+    
+    if (isConfigured && typeof emailjs !== 'undefined') {
+        emailjs.init(CONFIG.EMAILJS_PUBLIC_KEY);
+        console.log('✅ EmailJS initialized');
+    } else {
+        $('#setupNotice').classList.add('show');
+        console.log('⚠️ EmailJS not configured - using WhatsApp fallback');
+    }
+});
+
+// ====== SCROLL PROGRESS ======
+window.addEventListener('scroll', () => {
+    const winScroll = document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    $('#scrollProgress').style.width = (winScroll / height) * 100 + '%';
+    
+    // Header
+    if (window.scrollY > 50) $('#header').classList.add('scrolled');
+    else $('#header').classList.remove('scrolled');
+    
+    // Back to top
+    if (window.scrollY > 500) $('#backToTop').classList.add('show');
+    else $('#backToTop').classList.remove('show');
+    
+    // Active nav link
+    const sections = ['home', 'services', 'daily', 'testimonials', 'blog', 'contact'];
+    const scrollPos = window.scrollY + 120;
+    sections.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+            const top = el.offsetTop;
+            const bottom = top + el.offsetHeight;
+            const link = document.querySelector(`.nav-links a[href="#${id}"]`);
+            if (link) {
+                if (scrollPos >= top && scrollPos < bottom) link.classList.add('active');
+                else link.classList.remove('active');
             }
-        }, { passive: true });
-
-        // ============ MOBILE MENU ============
-        const mobileMenu = $('#mobileMenu');
-        const navLinks = $('#navLinks');
-        const mobileMenuIcon = mobileMenu.querySelector('i');
-
-        mobileMenu.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const isOpen = navLinks.classList.toggle('active');
-            mobileMenu.setAttribute('aria-expanded', isOpen);
-            mobileMenuIcon.classList.toggle('fa-bars', !isOpen);
-            mobileMenuIcon.classList.toggle('fa-times', isOpen);
-        });
-
-        // FIX BUG 1: Close menu on outside click
-        document.addEventListener('click', (e) => {
-            if (!navLinks.contains(e.target) && !mobileMenu.contains(e.target)) {
-                if (navLinks.classList.contains('active')) {
-                    navLinks.classList.remove('active');
-                    mobileMenu.setAttribute('aria-expanded', 'false');
-                    mobileMenuIcon.classList.add('fa-bars');
-                    mobileMenuIcon.classList.remove('fa-times');
-                }
-            }
-        });
-
-        // Close menu on link click
-        $$('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                mobileMenu.setAttribute('aria-expanded', 'false');
-                mobileMenuIcon.classList.add('fa-bars');
-                mobileMenuIcon.classList.remove('fa-times');
-            });
-        });
-
-        // ============ SMOOTH SCROLL ============
-        $$('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                const href = this.getAttribute('href');
-                if (href === '#' || href === '') return;
-                const target = $(href);
-                if (target) {
-                    e.preventDefault();
-                    const headerHeight = header.offsetHeight;
-                    const targetPosition = target.getBoundingClientRect().top + window.scrollY - headerHeight;
-                    window.scrollTo({ top: targetPosition, behavior: 'smooth' });
-                }
-            });
-        });
-
-        // ============ BACK TO TOP ============
-        const backToTop = $('#backToTop');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 500) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
-            }
-        }, { passive: true });
-
-        backToTop.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-
-        // ============ CHATBOT ============
-        const chatToggle = $('#chatToggle');
-        const chatWindow = $('#chatWindow');
-        const closeChat = $('#closeChat');
-        const chatMessages = $('#chatMessages');
-        const chatInput = $('#chatInput');
-        const chatSendBtn = $('#chatSendBtn');
-
-        let isProcessing = false; // FIX BUG 6: Rate limiting
-
-        chatToggle.addEventListener('click', (e) => {
-            e.stopPropagation();
-            chatWindow.classList.toggle('active');
-            if (chatWindow.classList.contains('active')) {
-                chatInput.focus();
-            }
-        });
-
-        closeChat.addEventListener('click', () => {
-            chatWindow.classList.remove('active');
-        });
-
-        // FIX BUG 2: Close chatbot on outside click
-        document.addEventListener('click', (e) => {
-            if (!chatWindow.contains(e.target) && !chatToggle.contains(e.target)) {
-                if (chatWindow.classList.contains('active')) {
-                    chatWindow.classList.remove('active');
-                }
-            }
-        });
-
-        function addMessage(text, isUser = false) {
-            const messageDiv = document.createElement('div');
-            messageDiv.className = `message ${isUser ? 'user-message' : 'bot-message'}`;
-            messageDiv.textContent = text;
-            chatMessages.appendChild(messageDiv);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-            return messageDiv;
         }
+    });
+}, { passive: true });
 
-        function getBotResponse(message) {
-            const msg = message.toLowerCase();
-            if (msg.includes('hi') || msg.includes('hello') || msg.includes('hey')) {
-                return "Hello! 👋 Welcome to JAOC. How can I help you? Ask about services, pricing, or hours.";
-            }
-            if (msg.includes('service') || msg.includes('સેવા')) {
-                return "We offer: Computer Repair (₹999+), Data Recovery (₹1499+), Networking (₹799+), and Printing. Which interests you?";
-            }
-            if (msg.includes('price') || msg.includes('cost') || msg.includes('કિંમત')) {
-                return "Pricing: Diagnostic ₹299, Virus Removal ₹499, Data Recovery ₹1499+, Network Setup ₹799+.";
-            }
-            if (msg.includes('hour') || msg.includes('time') || msg.includes('open') || msg.includes('સમય')) {
-                return "We're open Mon-Fri 9AM-8PM, Sat 10AM-6PM, Sun 10AM-2PM.";
-            }
-            if (msg.includes('address') || msg.includes('location') || msg.includes('where')) {
-                return "We're at Shop No. 05, T.M. Park, Mukund Parnera, Valsad - 396020.";
-            }
-            if (msg.includes('phone') || msg.includes('call') || msg.includes('contact')) {
-                return "Call us at +91 8141515020 or email bhavishyaenterprisevalsad@gmail.com";
-            }
-            return "Thank you for your message! For immediate assistance, please call +91 8141515020. Our team will respond shortly.";
+// ====== CURSOR GLOW ======
+const cursorGlow = $('#cursorGlow');
+let mouseX = 0, mouseY = 0;
+document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    cursorGlow.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+});
+
+// ====== THEME TOGGLE ======
+const themeToggle = $('#themeToggle');
+const savedTheme = localStorage.getItem('theme') || 'dark';
+document.documentElement.setAttribute('data-theme', savedTheme);
+updateThemeIcon(savedTheme);
+
+themeToggle.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    updateThemeIcon(next);
+});
+
+function updateThemeIcon(theme) {
+    themeToggle.innerHTML = theme === 'dark' 
+        ? '<i class="fas fa-sun"></i>' 
+        : '<i class="fas fa-moon"></i>';
+}
+
+// ====== MOBILE MENU ======
+const mobileMenuBtn = $('#mobileMenuBtn');
+const navLinks = $('#navLinks');
+
+mobileMenuBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    navLinks.classList.toggle('open');
+    const icon = mobileMenuBtn.querySelector('i');
+    icon.classList.toggle('fa-bars');
+    icon.classList.toggle('fa-times');
+});
+
+document.addEventListener('click', (e) => {
+    if (!navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+        if (navLinks.classList.contains('open')) {
+            navLinks.classList.remove('open');
+            mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+            mobileMenuBtn.querySelector('i').classList.remove('fa-times');
         }
+    }
+});
 
-        function handleChatMessage() {
-            if (isProcessing) return; // Prevent spam
-            const message = chatInput.value.trim();
-            if (!message) return;
+$$('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+        mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+    });
+});
 
-            isProcessing = true;
-            chatSendBtn.disabled = true;
-
-            addMessage(message, true);
-            chatInput.value = '';
-
-            // Typing indicator
-            const typingMsg = document.createElement('div');
-            typingMsg.className = 'message bot-message typing-indicator';
-            typingMsg.textContent = 'Typing';
-            chatMessages.appendChild(typingMsg);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-
-            setTimeout(() => {
-                typingMsg.remove();
-                addMessage(getBotResponse(message));
-                isProcessing = false;
-                chatSendBtn.disabled = false;
-                chatInput.focus();
-            }, 1200);
-        }
-
-        chatSendBtn.addEventListener('click', handleChatMessage);
-        chatInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                e.preventDefault();
-                handleChatMessage();
-            }
-        });
-
-        // ============ FORM VALIDATION (FIX BUG 3) ============
-        const contactForm = $('#contactForm');
-
-        function showError(inputId, errorId) {
-            $('#' + inputId).classList.add('error');
-            $('#' + errorId).classList.add('visible');
-        }
-
-        function clearError(inputId, errorId) {
-            $('#' + inputId).classList.remove('error');
-            $('#' + errorId).classList.remove('visible');
-        }
-
-        // Live validation clearing
-        ['name', 'email', 'phone', 'service', 'message'].forEach(field => {
-            const input = $('#' + field + 'Input');
-            const error = $('#' + field + 'Error');
-            if (input) {
-                input.addEventListener('input', () => {
-                    input.classList.remove('error');
-                    error.classList.remove('visible');
-                });
-            }
-        });
-
-        contactForm.addEventListener('submit', (e) => {
+// ====== SMOOTH SCROLL ======
+$$('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', (e) => {
+        const href = a.getAttribute('href');
+        if (href === '#' || !href) return;
+        const target = document.querySelector(href);
+        if (target) {
             e.preventDefault();
-            
-            const name = $('#nameInput').value.trim();
-            const email = $('#emailInput').value.trim();
-            const phone = $('#phoneInput').value.trim();
-            const service = $('#serviceInput').value;
-            const message = $('#messageInput').value.trim();
-            
-            let isValid = true;
+            const top = target.getBoundingClientRect().top + window.scrollY - 80;
+            window.scrollTo({ top, behavior: 'smooth' });
+        }
+    });
+});
 
-            // Name validation
-            if (name.length < 3) {
-                showError('nameInput', 'nameError');
-                isValid = false;
-            } else {
-                clearError('nameInput', 'nameError');
-            }
+// ====== BACK TO TOP ======
+$('#backToTop').addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
 
-            // Email validation
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                showError('emailInput', 'emailError');
-                isValid = false;
-            } else {
-                clearError('emailInput', 'emailError');
-            }
+// ====== PHONE INPUT ======
+$('#phoneInput').addEventListener('input', (e) => {
+    e.target.value = e.target.value.replace(/\D/g, '').slice(0, 10);
+});
 
-            // Phone validation (Indian mobile)
-            const phoneRegex = /^[6-9]\d{9}$/;
-            if (!phoneRegex.test(phone.replace(/\D/g, ''))) {
-                showError('phoneInput', 'phoneError');
-                isValid = false;
-            } else {
-                clearError('phoneInput', 'phoneError');
-            }
+// ====== FORM VALIDATION & SUBMISSION ======
+const contactForm = $('#contactForm');
+const formStatus = $('#formStatus');
 
-            // Service validation
-            if (!service) {
-                showError('serviceInput', 'serviceError');
-                isValid = false;
-            } else {
-                clearError('serviceInput', 'serviceError');
-            }
+// Clear error on input
+['name', 'phone', 'email', 'service', 'message'].forEach(f => {
+    const input = $('#' + f + 'Input');
+    const err = $('#' + f + 'Err');
+    input.addEventListener('input', () => {
+        input.classList.remove('error');
+        err.classList.remove('show');
+    });
+    input.addEventListener('change', () => {
+        input.classList.remove('error');
+        err.classList.remove('show');
+    });
+});
 
-            // Message validation
-            if (message.length < 10) {
-                showError('messageInput', 'messageError');
-                isValid = false;
-            } else {
-                clearError('messageInput', 'messageError');
-            }
+function validateForm() {
+    let valid = true;
+    const fields = {
+        name: { el: $('#nameInput'), err: $('#nameErr'), check: v => v.trim().length >= 3 },
+        phone: { el: $('#phoneInput'), err: $('#phoneErr'), check: v => /^[6-9]\d{9}$/.test(v) },
+        email: { el: $('#emailInput'), err: $('#emailErr'), check: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) },
+        service: { el: $('#serviceInput'), err: $('#serviceErr'), check: v => v.trim() !== '' },
+        message: { el: $('#messageInput'), err: $('#messageErr'), check: v => v.trim().length >= 10 }
+    };
+    
+    for (const key in fields) {
+        const f = fields[key];
+        if (!f.check(f.el.value)) {
+            f.el.classList.add('error');
+            f.err.classList.add('show');
+            valid = false;
+        }
+    }
+    return valid;
+}
 
-            if (!isValid) {
-                // Scroll to first error
-                const firstError = contactForm.querySelector('.error');
-                if (firstError) {
-                    firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    firstError.focus();
-                }
-                return;
-            }
+contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    if (!validateForm()) {
+        const firstErr = contactForm.querySelector('.error');
+        if (firstErr) firstErr.focus();
+        return;
+    }
+    
+    const submitBtn = $('#submitBtn');
+    const btnText = submitBtn.querySelector('span');
+    submitBtn.disabled = true;
+    btnText.textContent = 'Sending...';
+    submitBtn.querySelector('i').className = 'fas fa-spinner fa-spin';
+    
+    const formData = {
+        name: $('#nameInput').value.trim(),
+        phone: $('#phoneInput').value.trim(),
+        email: $('#emailInput').value.trim(),
+        service: $('#serviceInput').value,
+        message: $('#messageInput').value.trim(),
+        to_email: 'bhavishyaenterprisevalsad@gmail.com'
+    };
+    
+    const isConfigured = 
+        CONFIG.EMAILJS_PUBLIC_KEY !== 'YOUR_PUBLIC_KEY_HERE' &&
+        CONFIG.EMAILJS_SERVICE_ID !== 'YOUR_SERVICE_ID_HERE' &&
+        CONFIG.EMAILJS_TEMPLATE_ID !== 'YOUR_TEMPLATE_ID_HERE';
+    
+    if (isConfigured && typeof emailjs !== 'undefined') {
+        // Send via EmailJS
+        try {
+            await emailjs.send(CONFIG.EMAILJS_SERVICE_ID, CONFIG.EMAILJS_TEMPLATE_ID, formData);
+            showStatus('success', '✅ Message sent! We\'ll contact you within 30 minutes.');
+            contactForm.reset();
+            showToast('Message sent successfully!');
+        } catch (err) {
+            console.error('EmailJS error:', err);
+            showStatus('error', '❌ Failed to send. Trying WhatsApp...');
+            setTimeout(() => sendViaWhatsApp(formData), 800);
+        }
+    } else {
+        // Fallback: WhatsApp
+        sendViaWhatsApp(formData);
+    }
+    
+    // Reset button
+    setTimeout(() => {
+        submitBtn.disabled = false;
+        btnText.textContent = 'Send Message';
+        submitBtn.querySelector('i').className = 'fas fa-paper-plane';
+    }, 1000);
+});
 
-            // Submit with loading state (FIX: Loading state)
-            const submitBtn = $('#submitBtn');
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Sending...';
+function sendViaWhatsApp(data) {
+    const text = `Hi JAOC! I need help with: ${data.service}%0A%0AName: ${data.name}%0APhone: ${data.phone}%0AEmail: ${data.email}%0A%0AMessage: ${data.message}`;
+    const url = `https://wa.me/${CONFIG.WHATSAPP_NUMBER}?text=${text}`;
+    window.open(url, '_blank');
+    showStatus('success', '📱 WhatsApp opened - please send the pre-filled message');
+    showToast('Opening WhatsApp...');
+    contactForm.reset();
+}
 
-            setTimeout(() => {
-                alert('✅ Thank you! We will contact you shortly.\n\nઆપનો આભાર! અમે તમારો સંપર્ક કરીશું.');
-                contactForm.reset();
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Send Message →';
-            }, 1000);
-        });
+function showStatus(type, msg) {
+    formStatus.className = `form-status show ${type}`;
+    formStatus.innerHTML = `<i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i> ${msg}`;
+    setTimeout(() => {
+        formStatus.classList.remove('show');
+    }, 8000);
+}
 
-        // ============ PHONE INPUT FORMATTING ============
-        const phoneInput = $('#phoneInput');
-        phoneInput.addEventListener('input', (e) => {
-            let value = e.target.value.replace(/\D/g, '');
-            if (value.length > 10) value = value.slice(0, 10);
-            e.target.value = value;
-        });
+function showToast(msg) {
+    const toast = $('#toast');
+    $('#toastMessage').textContent = msg;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 3000);
+}
 
-        // ============ SCROLL ANIMATION ============
-        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
+// ====== CHATBOT ======
+const chatWindow = $('#chatWindow');
+const chatBody = $('#chatBody');
+const chatInput = $('#chatInput');
+const chatSendBtn = $('#chatSendBtn');
+const chatOpenBtn = $('#chatOpenBtn');
+const chatCloseBtn = $('#chatCloseBtn');
 
-        $$('.service-card, .daily-card, .testimonial-card, .blog-card').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-            observer.observe(el);
-        });
+let chatProcessing = false;
 
-        // ============ CONSOLE ============
-        console.log('✅ JAOC Website - Production Ready v2.0');
-        console.log('📞 Contact: +91 8141515020');
-        console.log('📍 Address: Shop No. 05, T.M. Park, Mukund Parnera, Valsad 396020');
-    </script>
+chatOpenBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    chatWindow.classList.add('open');
+    chatInput.focus();
+});
+
+chatCloseBtn.addEventListener('click', () => {
+    chatWindow.classList.remove('open');
+});
+
+document.addEventListener('click', (e) => {
+    if (!chatWindow.contains(e.target) && !chatOpenBtn.contains(e.target)) {
+        chatWindow.classList.remove('open');
+    }
+});
+
+function addChatMsg(text, isUser = false) {
+    const msg = document.createElement('div');
+    msg.className = `chat-msg ${isUser ? 'user' : 'bot'}`;
+    msg.textContent = text;
+    chatBody.appendChild(msg);
+    chatBody.scrollTop = chatBody.scrollHeight;
+    return msg;
+}
+
+function getBotReply(input) {
+    const m = input.toLowerCase();
+    if (/hi|hello|hey|નમસ્તે/.test(m)) return "Hello! 👋 How can I help you today? Ask about our services, pricing, hours, or location.";
+    if (/service|repair|fix|સેવા/.test(m)) return "We offer: 💻 Computer Repair (from ₹999), 💾 Data Recovery (from ₹1499), 🛡️ Virus Removal (₹499), 📶 Networking (from ₹799), 🖨️ Printing (₹2/page), 🖥️ Custom PC Build. Which interests you?";
+    if (/price|cost|charge|કિંમત/.test(m)) return "Our pricing: Diagnostic ₹299 (FREE with repair), Virus Removal ₹499, Data Recovery from ₹1499, Network Setup from ₹799, B&W Print ₹2/page, Color ₹10/page. Need a specific quote?";
+    if (/hour|time|open|close|સમય/.test(m)) return "🕐 Working Hours:\n• Mon-Fri: 9 AM - 8 PM\n• Saturday: 10 AM - 6 PM\n• Sunday: 10 AM - 2 PM";
+    if (/location|address|where|ક્યાં/.test(m)) return "📍 We're at Shop No. 05, T.M. Park, Mukund Parnera, Valsad - 396020. Near Parnera. Free parking available!";
+    if (/phone|call|contact|number/.test(m)) return "📞 Call us: +91 81415 15020\n📧 Email: bhavishyaenterprisevalsad@gmail.com\n💬 Or WhatsApp us anytime!";
+    if (/data|recover|backup/.test(m)) return "💾 Data Recovery - 95% success rate! We recover from:\n• Hard drives (HDD/SSD)\n• USB drives & memory cards\n• Formatted drives\n• Corrupted files\nStarting from ₹1499. Free evaluation!";
+    if (/wifi|network|internet/.test(m)) return "📶 Networking Services:\n• WiFi setup & optimization\n• Router configuration\n• Network security\n• LAN setup for office\nStarting at ₹799!";
+    if (/print|xerox|copy/.test(m)) return "🖨️ Printing Services:\n• B&W Print: ₹2/page\n• Color Print: ₹10/page\n• Xerox: ₹1/page\n• Photo Print: ₹15/photo\n• Lamination & Binding available";
+    if (/thank|thanks|આભાર/.test(m)) return "You're welcome! 😊 Is there anything else I can help you with? Feel free to call us at +91 81415 15020 for urgent needs.";
+    if (/book|appointment|schedule/.test(m)) return "📅 To book a service:\n1️⃣ Call: +91 81415 15020\n2️⃣ Or scroll to the contact form and send us a message\n3️⃣ We'll respond within 30 minutes!";
+    return "Thanks for your message! For detailed assistance, please:\n📞 Call: +91 81415 15020\n💬 WhatsApp: Available 24/7\n\nOur team will respond quickly. What else can I help with?";
+}
+
+function sendChatMessage() {
+    if (chatProcessing) return;
+    const msg = chatInput.value.trim();
+    if (!msg) return;
+    
+    chatProcessing = true;
+    chatSendBtn.disabled = true;
+    addChatMsg(msg, true);
+    chatInput.value = '';
+    
+    const typing = document.createElement('div');
+    typing.className = 'chat-msg bot';
+    typing.innerHTML = '<div class="typing-dots"><span></span><span></span><span></span></div>';
+    chatBody.appendChild(typing);
+    chatBody.scrollTop = chatBody.scrollHeight;
+    
+    setTimeout(() => {
+        typing.remove();
+        addChatMsg(getBotReply(msg));
+        chatProcessing = false;
+        chatSendBtn.disabled = false;
+        chatInput.focus();
+    }, 900);
+}
+
+chatSendBtn.addEventListener('click', sendChatMessage);
+chatInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        e.preventDefault();
+        sendChatMessage();
+    }
+});
+
+// Quick reply buttons
+document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('quick-btn')) {
+        const q = e.target.dataset.q;
+        chatInput.value = q;
+        sendChatMessage();
+    }
+});
+
+// ====== FADE IN ON SCROLL ======
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+$$('.service-card, .daily-card, .testimonial-card, .blog-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+});
+
+// ====== CONSOLE BRAND ======
+console.log('%c🚀 JAOC 2026', 'color:#ff3366;font-size:20px;font-weight:bold;');
+console.log('%c📞 +91 81415 15020 | 📍 Valsad, Gujarat', 'color:#00d9ff;font-size:12px;');
+</script>
+
 </body>
 </html>
